@@ -1,0 +1,287 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4173f8e8c0edf0846a2b9601a33a37e9, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: 
+  items:
+  - type: 0
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 0
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 0
+      sweetness: 0
+      acidity: 0
+      potentialAlcohol: 0
+      isFermentable: 0
+  - type: 1
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 2
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 3
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 4
+    prefab: {fileID: 8514083756800495459, guid: 5bda4e2ba2f56fd4c8e039a3d17de785, type: 3}
+    icon: {fileID: 21300000, guid: 91f2ce6e45c651a44aca23ec3f6c2db1, type: 3}
+    price: 150
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 5
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 6
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 7
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 8
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 9
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 10
+    prefab: {fileID: 4111660614666749678, guid: 2db534897e617174284641241de758de, type: 3}
+    icon: {fileID: 21300000, guid: d19f1405b80919a43940104680c545bb, type: 3}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 11
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 12
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 13
+    prefab: {fileID: 473957316692578105, guid: 740b0dab18a722c49be2eb5cb75ff78b, type: 3}
+    icon: {fileID: 21300000, guid: a286c334e8811c046b91c891c9e4277f, type: 3}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 14
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 15
+    prefab: {fileID: 6933662014861545656, guid: 3720a211ead4e19489bce3745f0f6214, type: 3}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 16
+    prefab: {fileID: 0}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
