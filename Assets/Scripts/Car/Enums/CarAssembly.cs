@@ -24,7 +24,6 @@ public class CarAssembly : MonoBehaviour
 
     private void Awake()
     {
-        // Cache renderery pre preview materiál
         foreach (var slot in carPartSlots)
         {
             if (slot.transparentModel != null)
@@ -34,14 +33,12 @@ public class CarAssembly : MonoBehaviour
 
     public void ShowSlotPreview(ItemType type, bool state)
     {
-        // najprv vypni všetky previews
         foreach (var slot in carPartSlots)
         {
             if (slot.transparentModel != null && !slot.isInstalled)
                 slot.transparentModel.SetActive(false);
         }
 
-        // potom zapni iba ten správny
         if (state)
         {
             foreach (var slot in carPartSlots)

@@ -78,8 +78,6 @@ public class ItemDatabase : ScriptableObject
                 }
             }
         }
-
-        // Odstráni entry, ktoré už nie sú v enum
         items.RemoveAll(e => !Enum.IsDefined(typeof(ItemType), e.type));
     }
 
@@ -118,7 +116,6 @@ public class ItemDatabase : ScriptableObject
         var prefab = GetPrefab(type);
         if (prefab != null)
             return GameObject.Instantiate(prefab, position, rotation);
-        Debug.LogWarning($"❌ Prefab pre {type} neexistuje!");
         return null;
     }
 }

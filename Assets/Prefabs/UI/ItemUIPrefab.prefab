@@ -451,8 +451,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8824263943213212167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8877c8e4b2203a046880937eed8b13f4, type: 3}
+  m_Script: {fileID: 11500000, guid: c4a3b4a93aba1cf48b4be5ad4cf098ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentAfterDrag: {fileID: 0}
   iconSlot: {fileID: 5818841333817947495}
+  itemType: 0

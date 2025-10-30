@@ -31,36 +31,6 @@ public class ConsumableScript : MonoBehaviour
         grabbableItemID = GetComponent<ItemID>();
     }
 
-    public void Consume()
-    {
-        if (data == null) return;
-
-        if (data.isFood)
-        {
-            playerStatsSystem.AddHunger(data.foodAmount);
-            if (data.sound != null) audioSource.PlayOneShot(data.sound);
-        }
-        else if (data.isDrink)
-        {
-            playerStatsSystem.AddThirst(data.drinkAmount);
-            if (data.sound != null) audioSource.PlayOneShot(data.sound);
-        }
-    }
-
-    // volá sa pri kúpe v shope
-    public void BuyObject(float price)
-    {
-        if (playerStatsSystem.currentMoney >= price)
-        {
-            objectRigidbody.useGravity = true;
-            interactable.enabled = false;
-            grabbableItemID.enabled = true;
-            gameObject.layer = 7;
-
-            objectOutline.OutlineColor = Color.white;
-            playerStatsSystem.SubtractMoney(price);
-        }
-    }
 
     // Getter pre Inventory – vytiahne všetky dáta o iteme
     public ConsumableData GetData()

@@ -228,9 +228,9 @@ MonoBehaviour:
     consumableData:
       isFood: 0
       foodAmount: 0
-      isDrink: 0
-      drinkAmount: 0
-      sound: {fileID: 0}
+      isDrink: 1
+      drinkAmount: -0.15
+      sound: {fileID: 8300000, guid: beb76577d5cdc4140a7cbf4970dc3f09, type: 3}
     ingredientData:
       volume: 1
       sweetness: 0.5

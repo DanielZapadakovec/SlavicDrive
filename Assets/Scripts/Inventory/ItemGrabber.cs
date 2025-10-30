@@ -34,7 +34,7 @@ public class ItemGrabber : MonoBehaviour
 
     void Update()
     {
-        HandleConsume();
+       // HandleConsume();
         bool hitSomething = Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, DetectDistance, ObjectLayer);
         if (hitSomething && hit.transform.TryGetComponent(out ItemID grab))
         {
@@ -127,7 +127,7 @@ public class ItemGrabber : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ConsumableData data = slot.consumableData;
+            ConsumableData data = ItemDatabase.GetConsumableData(slot.itemType);
             PlayerStatsSystem stats = FindAnyObjectByType<PlayerStatsSystem>();
 
             if (data != null && stats != null)

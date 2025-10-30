@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    itemType: 13
     isFood: 0
     foodAmount: 0
     isDrink: 1
