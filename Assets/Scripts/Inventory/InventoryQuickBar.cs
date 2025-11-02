@@ -72,7 +72,7 @@ public class InventoryQuickBar : MonoBehaviour
         slots[index].consumableData = ItemDatabase.GetConsumableData(type);
 
         GameObject itemUI = Instantiate(itemUIPrefab, slotParents[index]);
-        DraggableItem itemUIScript = itemUI.GetComponent<DraggableItem>();
+        ClickableItem itemUIScript = itemUI.GetComponent<ClickableItem>();
         itemUIScript.itemType = type;
         itemUIScript.iconSlot.sprite = icon;
 
@@ -134,14 +134,103 @@ public class InventoryQuickBar : MonoBehaviour
             else
             {
                 Transform child = slotParents[i].GetChild(0);
-                DraggableItem draggable = child.GetComponent<DraggableItem>();
+                ClickableItem draggable = child.GetComponent<ClickableItem>();
                 if (draggable != null)
                 {
-                    Debug.Log("Si za checkom");
                     slots[i].itemType = draggable.itemType;
                     slots[i].consumableData = ItemDatabase.GetConsumableData(draggable.itemType);
 
                     slots[i].itemPrefabInstance = child.gameObject;
+                }
+            }
+        }
+    }
+    public bool TryPickUpItem(ItemID item, Transform dropPoint, Camera cam)
+    {
+        int slot = activeSlot;
+
+        // Ak v ruke už nieèo máš – zahodí to
+        if (slots[slot].itemType != ItemType.None)
+        {
+            GameObject oldObj = ItemDatabase.SpawnItem(slots[slot].itemType, dropPoint.position);
+            if (oldObj.TryGetComponent<Rigidbody>(out Rigidbody rb))
+                rb.AddForce(cam.transform.forward * 2f, ForceMode.Impulse);
+        }
+
+        // Pridá nový predmet
+        ItemType type = item.itemType;
+        Sprite icon = ItemDatabase.GetIcon(type);
+        ConsumableData consumable = ItemDatabase.GetConsumableData(type);
+
+        SetSlot(slot, type, icon, consumable);
+        Destroy(item.gameObject);
+
+        return true;
+    }
+
+    public void DropActiveItem(Transform dropPoint, Camera cam)
+    {
+        int slot = activeSlot;
+        if (slots[slot].itemType == ItemType.None) return;
+
+        GameObject dropObj = ItemDatabase.SpawnItem(slots[slot].itemType, dropPoint.position);
+        if (dropObj.TryGetComponent<Rigidbody>(out Rigidbody rb))
+            rb.AddForce(cam.transform.forward * 2f, ForceMode.Impulse);
+
+        ClearSlot(slot);
+    }
+
+    public void ConsumeActiveItem()
+    {
+        int slotIndex = activeSlot;
+        var data = slots[slotIndex].consumableData;
+        if (data == null) return;
+
+        PlayerStatsSystem stats = FindAnyObjectByType<PlayerStatsSystem>();
+        if (stats == null) return;
+
+        if (data.isFood) stats.AddHunger(data.foodAmount);
+        if (data.isDrink) stats.AddThirst(data.drinkAmount);
+
+        if (data.sound != null)
+            AudioSource.PlayClipAtPoint(data.sound, Camera.main.transform.position);
+
+        ClearSlot(slotIndex);
+    }
+    public bool HasFreeSlot()
+    {
+        foreach (var s in slotParents)
+            if (s.childCount == 0) return true;
+        return false;
+    }
+
+    public void AddItem(ItemType type)
+    {
+        foreach (var s in slotParents)
+        {
+            if (s.childCount == 0)
+            {
+                var ui = Instantiate(itemUIPrefab, s);
+                var clickable = ui.GetComponent<ClickableItem>();
+                clickable.itemType = type;
+                clickable.isInStorage = false;
+                clickable.iconSlot.sprite = ItemDatabase.GetIcon(type);
+                return;
+            }
+        }
+    }
+
+    public void RemoveItem(ItemType type)
+    {
+        foreach (var s in slotParents)
+        {
+            if (s.childCount > 0)
+            {
+                var item = s.GetChild(0).GetComponent<ClickableItem>();
+                if (item.itemType == type)
+                {
+                    Destroy(item.gameObject);
+                    return;
                 }
             }
         }

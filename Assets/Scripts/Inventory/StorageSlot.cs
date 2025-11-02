@@ -10,8 +10,7 @@ public class StorageSlot : MonoBehaviour, IDropHandler
         if (transform.childCount == 0)
         {
             GameObject dropped = eventData.pointerDrag;
-            DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
-            draggableItem.parentAfterDrag = transform;
+            ClickableItem draggableItem = dropped.GetComponent<ClickableItem>();
         }
 
     }
