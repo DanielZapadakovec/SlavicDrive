@@ -13,7 +13,7 @@ public class ConsumableData
 public class ConsumableScript : MonoBehaviour
 {
     [Header("Consumable Setup")]
-    public ConsumableData data;   // tu sa definuje èo je to za item
+    public ConsumableData data;
     public AudioSource audioSource;
 
     private PlayerStatsSystem playerStatsSystem;

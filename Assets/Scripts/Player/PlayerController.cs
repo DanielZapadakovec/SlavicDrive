@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
@@ -80,7 +79,8 @@ using UnityEngine;
             InstallFOV = cam.fieldOfView;
             RunningValue = RuningSpeed;
             WalkingValue = walkingSpeed;
-        }
+        characterController.detectCollisions = false;
+    }
 
         void Update()
         {

@@ -15,6 +15,7 @@ public class InventoryQuickBar : MonoBehaviour
     public Transform[] slotParents;
     public int activeSlot = 0;
 
+
     [Header("Prefabs")]
     public GameObject itemUIPrefab;
 
@@ -25,7 +26,10 @@ public class InventoryQuickBar : MonoBehaviour
     [Header("UI Highlight")]
     public Color normalColor = new Color(1, 1, 1, 0.5f);
     public Color activeColor = Color.white;
+    public UIManager uiManager;
 
+    [Header("Audio")]
+    public AudioSource audioProps;
     private void Start()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -37,6 +41,7 @@ public class InventoryQuickBar : MonoBehaviour
     {
         HandleSlotSwitch();
         CheckIfItemStillExists();
+        ConsumeActiveItem();
     }
 
     private void HandleSlotSwitch()
@@ -149,7 +154,6 @@ public class InventoryQuickBar : MonoBehaviour
     {
         int slot = activeSlot;
 
-        // Ak v ruke už nieèo máš – zahodí to
         if (slots[slot].itemType != ItemType.None)
         {
             GameObject oldObj = ItemDatabase.SpawnItem(slots[slot].itemType, dropPoint.position);
@@ -157,7 +161,6 @@ public class InventoryQuickBar : MonoBehaviour
                 rb.AddForce(cam.transform.forward * 2f, ForceMode.Impulse);
         }
 
-        // Pridá nový predmet
         ItemType type = item.itemType;
         Sprite icon = ItemDatabase.GetIcon(type);
         ConsumableData consumable = ItemDatabase.GetConsumableData(type);
@@ -181,21 +184,28 @@ public class InventoryQuickBar : MonoBehaviour
     }
 
     public void ConsumeActiveItem()
-    {
+    {       
         int slotIndex = activeSlot;
         var data = slots[slotIndex].consumableData;
-        if (data == null) return;
+        if (data == null || (!data.isDrink && !data.isFood)) return;
+
+        bool canConsume = true;
 
         PlayerStatsSystem stats = FindAnyObjectByType<PlayerStatsSystem>();
         if (stats == null) return;
-
-        if (data.isFood) stats.AddHunger(data.foodAmount);
-        if (data.isDrink) stats.AddThirst(data.drinkAmount);
-
-        if (data.sound != null)
-            AudioSource.PlayClipAtPoint(data.sound, Camera.main.transform.position);
-
-        ClearSlot(slotIndex);
+        uiManager.ShowEKeyBind(canConsume);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (data.isFood) stats.AddHunger(data.foodAmount);
+            if (data.isDrink) stats.AddThirst(data.drinkAmount);
+            if (data.sound != null && !audioProps.isPlaying)
+            {
+                audioProps.PlayOneShot(data.sound);
+            }
+            
+            ClearSlot(slotIndex);
+            canConsume = false;
+        }
     }
     public bool HasFreeSlot()
     {

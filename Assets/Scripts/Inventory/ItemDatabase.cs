@@ -17,8 +17,6 @@ public class ItemDatabase : ScriptableObject
         public int price = 10;
         public ConsumableData consumableData;
         public IngredientData ingredientData;
-        public bool isConsumable;
-        public bool isIngredient;
     }
 
     [Header("Databáza Itemov")]

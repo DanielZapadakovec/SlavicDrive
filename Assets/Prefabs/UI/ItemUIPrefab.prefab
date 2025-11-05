@@ -153,7 +153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Battery
+  m_Text: 
 --- !u!1 &5249433103616501049
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x10
+  m_Text: 
 --- !u!1 &5871834506519354331
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a3b4a93aba1cf48b4be5ad4cf098ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentAfterDrag: {fileID: 0}
   iconSlot: {fileID: 5818841333817947495}
   itemType: 0
+  isInStorage: 0
