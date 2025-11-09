@@ -11,7 +11,6 @@ public class ClickableItem : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Debug.Log($"Right-clicked on {itemType}");
 
             if (InventoryManager.Instance != null)
             {

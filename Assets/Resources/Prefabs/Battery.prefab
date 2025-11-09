@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1176344556796528371}
   - component: {fileID: 2812701738595703316}
   - component: {fileID: 4466763397947170102}
-  - component: {fileID: 2088361466258783809}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2088361466258783809
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5036846637240253123}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8856737414363312690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d03619efa12d1094aa7016ce71b9c5da, type: 2}
     - target: {fileID: 919132149155446097, guid: 28cf27a13a0bdfc4888b550be5a1aeb0, type: 3}
       propertyPath: m_Name
-      value: CarBattery
+      value: Battery
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28cf27a13a0bdfc4888b550be5a1aeb0, type: 3}
       propertyPath: m_Layer
@@ -183,7 +161,7 @@ PrefabInstance:
       addedObject: {fileID: 3417922843789324519}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 28cf27a13a0bdfc4888b550be5a1aeb0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8030987563708342884}
+      addedObject: {fileID: 3468696758629754969}
   m_SourcePrefab: {fileID: 100100000, guid: 28cf27a13a0bdfc4888b550be5a1aeb0, type: 3}
 --- !u!1 &8514083756800495459 stripped
 GameObject:
@@ -248,8 +226,8 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!64 &8030987563708342884
-MeshCollider:
+--- !u!65 &3468696758629754969
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -266,10 +244,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8623676648822269807, guid: 28cf27a13a0bdfc4888b550be5a1aeb0, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.0030779997, y: 0.0019639998, z: 0.002473}
+  m_Center: {x: 0.00003076467, y: 0.00013545246, z: -0.00084753503}
 --- !u!4 &9035288193262687705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 28cf27a13a0bdfc4888b550be5a1aeb0, type: 3}

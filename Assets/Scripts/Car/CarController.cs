@@ -16,7 +16,7 @@ public class CarController : MonoBehaviour
 
     private float currentSteerAngle, currentBrakeForce;
     public int currentGear = 1;
-    private float currentSpeed;
+    public float currentSpeed;
 
     [Header("RPM_Props")]
     private float engineRPM;

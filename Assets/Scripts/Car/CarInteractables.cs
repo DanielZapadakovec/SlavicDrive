@@ -37,6 +37,7 @@ public class CarInteractables : MonoBehaviour
     public AudioSource trunkAudio;
     public AudioClip trunkAudioOpen;
     public AudioClip trunkAudioClose;
+    public StorageObject trunkStorageObject;
 
     [Header("Sit")]
     [SerializeField] private Transform carCamera;    
@@ -192,6 +193,7 @@ public class CarInteractables : MonoBehaviour
         if (!isTrunkOpen)
         {
             trunkAnimator.SetBool(openbool, true);
+            trunkStorageObject.OpenStorage();
             isTrunkOpen = true;
             trunkAudio.clip = trunkAudioOpen;
             trunkAudio.Play();

@@ -5,12 +5,11 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
     public MonoBehaviour[] scriptsToDisable;
-
     private bool isPaused = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !StorageInventory.isOpen )
         {
             if (isPaused)
                 Resume();

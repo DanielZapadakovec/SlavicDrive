@@ -5,11 +5,28 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public InventoryQuickBar playerInventory;
-    public StorageInventory storageInventory;
+    public StorageInventory storageUI;
+
+    private StorageObject currentStorage;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void OpenStorageUI(StorageObject storage)
+    {
+        currentStorage = storage;
+        storageUI.OpenStorage(storage);
+    }
+
+    public void CloseStorageUI()
+    {
+        if (currentStorage != null)
+        {
+            storageUI.CloseStorage();
+            currentStorage = null;
+        }
     }
     public void MoveItem(ClickableItem item, bool fromStorage)
     {
@@ -18,7 +35,7 @@ public class InventoryManager : MonoBehaviour
             if (playerInventory.HasFreeSlot())
             {
                 playerInventory.AddItem(item.itemType);
-                storageInventory.RemoveItem(item.itemType);
+                storageUI.RemoveItem(item.itemType);
             }
             else
             {
@@ -27,9 +44,9 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            if (storageInventory.HasFreeSlot())
+            if (storageUI.HasFreeSlot())
             {
-                storageInventory.AddItem(item.itemType);
+                storageUI.AddItem(item.itemType);
                 playerInventory.RemoveItem(item.itemType);
             }
             else

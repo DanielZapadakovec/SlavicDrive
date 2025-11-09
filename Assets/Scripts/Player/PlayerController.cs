@@ -20,7 +20,7 @@ using UnityEngine;
         [SerializeField] float CroughHeight = 1.0f;
         [SerializeField] float gravity = 20.0f;
         [SerializeField] float timeToRunning = 2.0f;
-        [HideInInspector] public bool canMove = true;
+        [HideInInspector] public static bool canMove = true;
         [HideInInspector] public bool CanRunning = true;
         [HideInInspector] public bool CanCrough = true;
 
@@ -229,12 +229,14 @@ using UnityEngine;
         if(!canMoveCamera)
         {
             canMoveCamera = true;
+            canMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
         else if (canMoveCamera)
         {
             canMoveCamera = false;
+            canMove = false;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
