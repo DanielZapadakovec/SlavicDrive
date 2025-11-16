@@ -14,6 +14,7 @@ TagManager:
   - Iron
   - Terrain
   - Asphalt
+  - Car
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Player
   - Car
   - Ground
-  - 
+  - PlayerCar
   - 
   - 
   - 
