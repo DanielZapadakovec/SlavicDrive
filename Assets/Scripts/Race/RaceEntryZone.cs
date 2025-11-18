@@ -5,6 +5,7 @@ public class RaceEntryZone : MonoBehaviour
     public float requiredTimeInside = 5f;  // hr·Ë musÌ byù v zÛne 5 sek˙nd
     private float timer = 0f;
     private bool playerInside = false;
+    public Material zoneMaterial;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,7 @@ public class RaceEntryZone : MonoBehaviour
         {
             playerInside = true;
             timer = 0f; // reset timeru pri vstupe
+            zoneMaterial.color = Color.green;
         }
     }
 
@@ -35,6 +37,7 @@ public class RaceEntryZone : MonoBehaviour
             {
                 RaceManager.Instance.StartRace();
                 playerInside = false;
+                zoneMaterial.color = Color.white;
             }
         }
     }

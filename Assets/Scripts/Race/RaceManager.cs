@@ -17,6 +17,8 @@ public class RaceManager : MonoBehaviour
     public List<float> npcTimes; // manu·lne nastavÌö v inspectore
     public string playerResult = "";
 
+    public GameObject raceEntryZone;
+
     private void Awake()
     {
         Instance = this;
@@ -25,6 +27,7 @@ public class RaceManager : MonoBehaviour
     private void Start()
     {
         HideAllCheckpoints();
+        raceEntryZone.SetActive(false);
     }
 
     private void Update()
@@ -40,7 +43,7 @@ public class RaceManager : MonoBehaviour
         if (!isRegistered)
         {
             isRegistered = true;
-            Debug.Log("Hr·Ë sa zapÌsal na z·vod!");
+            raceEntryZone.SetActive(true);
         }
     }
 
@@ -53,6 +56,7 @@ public class RaceManager : MonoBehaviour
         raceTime = 0f;
         currentCheckpoint = 0;
 
+        raceEntryZone.SetActive(false);
         ActivateCheckpoint(0);
 
         Debug.Log("Z·vod zaËal!");
@@ -115,10 +119,9 @@ public class RaceManager : MonoBehaviour
 
     void ShowResults()
     {
-        // v˝sledky vloûÌme do listu, aby sme ich mohli zoradiù
+        HideAllCheckpoints();
         List<RaceResult> results = new List<RaceResult>();
 
-        // hr·Ë (ak nie diskvalifikovan˝)
         bool disq = playerResult == "DISKVALIFIKOVAN›";
 
         if (!disq)
@@ -127,7 +130,6 @@ public class RaceManager : MonoBehaviour
         }
         else
         {
-            // diskvalifikovan˝ -> öpeci·lny z·znam
             results.Add(new RaceResult("Player (DQ)", float.MaxValue));
         }
 
@@ -137,10 +139,8 @@ public class RaceManager : MonoBehaviour
             results.Add(new RaceResult("NPC " + (i + 1), npcTimes[i]));
         }
 
-        // ZORADENIE PODºA »ASU
         results.Sort((a, b) => a.time.CompareTo(b.time));
 
-        // Poskladanie textu pre UI
         string output = "";
 
         for (int i = 0; i < results.Count; i++)
