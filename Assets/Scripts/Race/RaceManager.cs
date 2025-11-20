@@ -44,6 +44,7 @@ public class RaceManager : MonoBehaviour
         {
             isRegistered = true;
             raceEntryZone.SetActive(true);
+            RaceUIManager.Instance.ShowRegistered();
         }
     }
 
