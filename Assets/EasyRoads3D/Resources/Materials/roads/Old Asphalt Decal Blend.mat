@@ -2,20 +2,24 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Old Asphalt Decal Blend
-  m_Shader: {fileID: 4800000, guid: 3cbd06adee542cf4489b516e000e4876, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON _DETAIL_MULX2
+  m_Shader: {fileID: 4800000, guid: f12bc267e00e17749bbf7369d21bb7ea, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -160,9 +164,12 @@ Material:
     - _Cutoff: 0.165
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EnvironmentReflections: 1
     - _Float0: 1
     - _Float1: 1
     - _Glossiness: 0
+    - _MainMetallicPower: 0
+    - _MainSmoothnessPower: 1
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
@@ -177,12 +184,14 @@ Material:
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _Smoothness0: 0.465
     - _Smoothness1: 0.509
     - _Smoothness2: 0.459
     - _Smoothness3: 1
     - _SmoothnessPower: 1
     - _SmoothnessRoad: 0.391
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1

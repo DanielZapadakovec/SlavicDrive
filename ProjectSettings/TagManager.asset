@@ -5,12 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
-  - TreeGatheringPoint
-  - PressingPoint
-  - Tree
-  - Log
-  - HeaterMachine
-  - BottleCrate
   - Iron
   - Terrain
   - Asphalt
