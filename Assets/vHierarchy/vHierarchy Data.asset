@@ -51,6 +51,11 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1892903358613691423-980805806
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-261740311-0
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-184233509-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-919132149155446097-1869155098
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-6856444427929557281-1059878285
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1935182743-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1953034396-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-432111559-0
         values:
         - colorIndex: 7
           iconNameOrGuid: PreMatCylinder
@@ -181,6 +186,26 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 7
+          iconNameOrGuid: Folder Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: Folder Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: Folder Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
           iconNameOrGuid: Folder Icon
           isIconRecursive: 0
           isColorRecursive: 0
