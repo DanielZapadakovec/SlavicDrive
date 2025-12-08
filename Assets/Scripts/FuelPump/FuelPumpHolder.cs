@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class FuelPumpHandler : MonoBehaviour
 {
-    public Transform fuelPumpStation;
     public Transform playerHand;
     public GameObject fuelNozzle;
     public GameObject noozleCollider;
@@ -22,7 +21,7 @@ public class FuelPumpHandler : MonoBehaviour
 
     void Update()
     {
-        if (isHoldingNozzle && Vector3.Distance(playerHand.position, fuelPumpStation.position) > returnDistance)
+        if (isHoldingNozzle && Vector3.Distance(playerHand.position, this.gameObject.transform.position) > returnDistance)
         {
             ReturnNozzleToStation();
         }

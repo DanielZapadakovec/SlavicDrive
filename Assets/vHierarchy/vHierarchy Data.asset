@@ -57,6 +57,10 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1953034396-0
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-432111559-0
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-696678776-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-4687036613997881629-2314165852771046859
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-472236163-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1704616383-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-2138440000-0
         values:
         - colorIndex: 7
           iconNameOrGuid: PreMatCylinder
@@ -212,6 +216,22 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 9
           iconNameOrGuid: Terrain Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: PreMatCube
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: PreMatCube
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: BoxCollider Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

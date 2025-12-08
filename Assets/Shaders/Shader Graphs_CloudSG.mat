@@ -46,9 +46,9 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _CloudSpeed: {r: 0.002, g: 0.002, b: 0, a: 0}
+    - _CloudSpeed: {r: 0.001, g: 0.001, b: 0, a: 0}
     - _CloudsColor: {r: 0.6309185, g: 0.82897174, b: 0.9622642, a: 1}
-    - _DistortSpeed: {r: 0.002, g: 0.002, b: 0, a: 0}
+    - _DistortSpeed: {r: 0.001, g: 0.001, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8748446297141886984
 MonoBehaviour:

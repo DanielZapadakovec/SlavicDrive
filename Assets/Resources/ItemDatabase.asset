@@ -285,3 +285,19 @@ MonoBehaviour:
       acidity: 0.1
       potentialAlcohol: 0.08
       isFermentable: 1
+  - type: 17
+    prefab: {fileID: 6167840459595178379, guid: 6c8a45da743e5304b99e87ef055bdba6, type: 3}
+    icon: {fileID: 21300000, guid: 747de1aca727c4946b80e8df3044b02b, type: 3}
+    price: 5
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 0
+      drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1

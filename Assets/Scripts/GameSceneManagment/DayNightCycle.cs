@@ -5,6 +5,17 @@ using System.Collections;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public enum WeekDay
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
     [Header("Time Settings")]
     [Tooltip("Ako rıchlo plynie èas. 60 = 1 minúta za sekundu")]
     public float timeMultiplier = 30f;
@@ -12,7 +23,11 @@ public class DayNightCycle : MonoBehaviour
     [Tooltip("Poèiatoènı èas v hre")]
     public int startHour = 8;
 
+    [Tooltip("Poèiatoènı deò v tıdni")]
+    public WeekDay startDay = WeekDay.Monday;
+
     private DateTime currentTime;
+    private int currentDayIndex;
 
     [Header("Sun Settings")]
     public Light sunLight;
@@ -31,6 +46,7 @@ public class DayNightCycle : MonoBehaviour
     private void Start()
     {
         currentTime = DateTime.Today.AddHours(startHour);
+        currentDayIndex = (int)startDay;
     }
 
     private void Update()
@@ -39,18 +55,27 @@ public class DayNightCycle : MonoBehaviour
         RotateSun();
         UpdateLighting();
         UpdateTimeText();
-
     }
 
     private void UpdateTime()
     {
         currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
+
+        if (currentTime.Hour == 0 && currentTime.Minute == 0 && currentTime.Second < 1f)
+        {
+            AdvanceDay();
+        }
+    }
+
+    private void AdvanceDay()
+    {
+        currentDayIndex = (currentDayIndex + 1) % Enum.GetValues(typeof(WeekDay)).Length;
     }
 
     private void RotateSun()
     {
         float sunAngle = (float)(currentTime.TimeOfDay.TotalHours / 24f) * 360f;
-        sunTransform.rotation = Quaternion.Euler(sunAngle - 90f, -278f, 0f); // -90 posúva slnko aby zaèínalo na vıchode
+        sunTransform.rotation = Quaternion.Euler(sunAngle - 90f, -278f, 0f);
     }
 
     private void UpdateLighting()
@@ -63,8 +88,10 @@ public class DayNightCycle : MonoBehaviour
 
     private void UpdateTimeText()
     {
-        timeDisplay.text = currentTime.ToString("HH:mm");
+        string dayName = ((WeekDay)currentDayIndex).ToString();
+        timeDisplay.text = currentTime.ToString("HH:mm") + " | " + dayName;
     }
+
     public void StartSleepEffect(float fatigue)
     {
         if (!isFastForwarding && fatigue > 0f)
@@ -77,13 +104,10 @@ public class DayNightCycle : MonoBehaviour
     {
         isFastForwarding = true;
 
-        float fastForwardDuration = 5f; // v sekundách
+        float fastForwardDuration = 5f;
         float hoursToSimulate = 7f * fatigue;
 
-        // Ko¾ko sekúnd v hre treba aby prebehlo hoursToSimulate hodín
         float normalSecondsToSimulate = (hoursToSimulate * 3600f) / timeMultiplier;
-
-        // Potrebujeme novı timeMultiplier takı, aby sa simulovanı èas prebehol za fastForwardDuration
         float boostedMultiplier = (hoursToSimulate * 3600f) / fastForwardDuration;
 
         float originalMultiplier = timeMultiplier;
@@ -97,7 +121,6 @@ public class DayNightCycle : MonoBehaviour
             yield return null;
         }
 
-        // Po skonèení efektu vrátime èasovı multiplikátor spä
         timeMultiplier = originalMultiplier;
         isFastForwarding = false;
     }
@@ -106,5 +129,4 @@ public class DayNightCycle : MonoBehaviour
     {
         timeMultiplier = value;
     }
-
 }
