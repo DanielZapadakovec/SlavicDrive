@@ -41,11 +41,13 @@ public class DayNightCycle : MonoBehaviour
 
     [Header("UI Settings")]
     public Text timeDisplay;
+    private DateTime previousTime;
 
 
     private void Start()
     {
         currentTime = DateTime.Today.AddHours(startHour);
+        previousTime = currentTime;
         currentDayIndex = (int)startDay;
     }
 
@@ -55,6 +57,16 @@ public class DayNightCycle : MonoBehaviour
         RotateSun();
         UpdateLighting();
         UpdateTimeText();
+
+        previousTime = currentTime;
+
+        currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
+
+        // Detect crossing midnight
+        if (previousTime.Day != currentTime.Day)
+        {
+            AdvanceDay();
+        }
     }
 
     private void UpdateTime()

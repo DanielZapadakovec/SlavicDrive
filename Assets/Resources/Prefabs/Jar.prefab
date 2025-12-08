@@ -93,9 +93,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6832878266089716529}
   - component: {fileID: 572138541703027530}
-  - component: {fileID: 275992044491908541}
   - component: {fileID: 7023440589713483653}
   - component: {fileID: 9222972214299506390}
+  - component: {fileID: 4964036160478255165}
+  - component: {fileID: 4480353495551851148}
   m_Layer: 7
   m_Name: Jar
   m_TagString: Untagged
@@ -148,29 +149,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &275992044491908541
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6167840459595178379}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 4.544041
-  m_Height: 11.1651
-  m_Direction: 1
-  m_Center: {x: -0.12499739, y: 5.5484066, z: -0.135831}
 --- !u!114 &7023440589713483653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +180,48 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &4964036160478255165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167840459595178379}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.80612, y: 11.654274, z: 8.936074}
+  m_Center: {x: -0.082312465, y: 5.3271365, z: -0.07823037}
+--- !u!65 &4480353495551851148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6167840459595178379}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.157844, y: 13.870075, z: 8.936074}
+  m_Center: {x: -0.055005558, y: 4.952928, z: -0.07823037}
 --- !u!1 &7300519828701953258
 GameObject:
   m_ObjectHideFlags: 0
