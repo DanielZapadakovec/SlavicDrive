@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 4329688371082706592}
   - component: {fileID: 6834663783418953373}
   - component: {fileID: 3877539721446216935}
-  - component: {fileID: -6030589021345058244}
+  - component: {fileID: 3408419511526879408}
+  - component: {fileID: 1663808134967859439}
   m_Layer: 7
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -145,7 +146,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!65 &-6030589021345058244
+--- !u!65 &3408419511526879408
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,5 +165,26 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.13114041, y: 0.40743834, z: 0.6604372}
-  m_Center: {x: -0.0013824403, y: -0.032148376, z: 0.009781957}
+  m_Size: {x: 0.28532255, y: 0.40743834, z: 0.48144794}
+  m_Center: {x: -0.0060501993, y: -0.032148376, z: -0.005392432}
+--- !u!65 &1663808134967859439
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111660614666749678}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.540933, y: 0.40743834, z: 0.56307995}
+  m_Center: {x: -0.010431051, y: -0.032148376, z: 0.0020279884}

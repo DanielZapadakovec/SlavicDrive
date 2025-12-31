@@ -3,13 +3,40 @@
     "name": "InputActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "Gameplay",
             "id": "7644f48b-ee37-423e-8c75-7c35545c5937",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "OnScroll",
+                    "type": "Value",
                     "id": "7976a3d6-6d95-43ba-9519-e084c382b899",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "NextSlot",
+                    "type": "Button",
+                    "id": "5e15f6e1-eb31-442f-9b2e-65cd4f61b293",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PrevSlot",
+                    "type": "Button",
+                    "id": "8aec3487-ba7a-48d9-9995-8118aa35f89c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Consume",
+                    "type": "Button",
+                    "id": "d83a54b1-5b89-44f8-aabb-8d03ed4c0d0b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -20,11 +47,66 @@
                 {
                     "name": "",
                     "id": "ac6d930d-f072-4f8f-ae02-7a56dc3057dc",
-                    "path": "",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "OnScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "984b384d-8ba2-42e8-a9f2-900d0c5e29b9",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "OnScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d9dbdda-f642-4169-a7d0-6e6a0628e45e",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "NextSlot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b3e4576-7948-4248-89fd-784507be405e",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "PrevSlot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e07dd977-e795-4606-a424-6c33ce62b30a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Consume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0cb190c-19f4-4b89-8a44-79ca79ab3594",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Consume",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -152,18 +234,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchCamera",
+                    "name": "Zoom",
                     "type": "Button",
-                    "id": "9a1db909-d00c-4f68-8429-05334d14d98a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Restart",
-                    "type": "Button",
-                    "id": "df6fff5d-c901-4e57-be3a-9302c349469e",
+                    "id": "4fa97bd0-bd49-422a-911c-0733b676db9b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -404,17 +477,6 @@
                 },
                 {
                     "name": "",
-                    "id": "568a48ee-65ec-491d-9788-dc4599d070a3",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Restart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "376077f2-5949-4c1c-86b9-5d6828758470",
                     "path": "<Keyboard>/q",
                     "interactions": "",
@@ -525,28 +587,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e31d1e54-a715-4d85-a628-06c3765e6e97",
-                    "path": "<Keyboard>/v",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwitchCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7c09b70a-8e5d-45bc-b5cc-bcc4cb39f9f1",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwitchCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3ee58ed3-11ac-4652-93a1-ca8d1e17408b",
                     "path": "<Keyboard>/leftAlt",
                     "interactions": "",
@@ -564,6 +604,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "StartCar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8bbd11e-46b2-4c9e-821c-93c21cdff75c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "352c3000-2803-462d-94ed-eaea7fabb951",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

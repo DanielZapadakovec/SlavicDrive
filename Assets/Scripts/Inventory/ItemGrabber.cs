@@ -20,7 +20,7 @@ public class ItemGrabber : MonoBehaviour
     private Camera cam;
     private RaycastHit hit;
     private ItemID outlinedItem;
-    private bool canPickUp, canAssembly;
+    public bool canPickUp, canAssembly;
 
     void Start() => cam = GetComponent<Camera>();
 
@@ -28,7 +28,6 @@ public class ItemGrabber : MonoBehaviour
     {
         HandleRaycast();
         HandleAssembly();
-        UpdateUIHints();
     }
 
     void HandleRaycast()
@@ -92,14 +91,4 @@ public class ItemGrabber : MonoBehaviour
         }
     }
 
-    void UpdateUIHints()
-    {
-        bool showE = canPickUp || canAssembly;
-        uiManager.ShowEKeyBind(showE);
-
-        int slotIndex = inventory.activeSlot;
-        bool hasItemInHand = inventory.slots[slotIndex].itemType != ItemType.None;
-        bool showF = !canPickUp && hasItemInHand;
-        uiManager.ShowFKeyBind(showF);
-    }
 }

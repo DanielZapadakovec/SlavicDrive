@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
@@ -13,26 +14,28 @@ public class PlayerInteraction : MonoBehaviour
     private bool canHold;
     public Text errorMessage;
     public bool isUsingItem;
+    public bool isInteracting;
     [SerializeField] public static bool canInteract = true;
-
+    public UIManager uiManager;
+    public InventoryQuickBar inventoryQuickBar;
 
 
     void Update()
     {
         CheckInteraction();
-        if (Input.GetMouseButtonDown(0) && currentInteractable != null && !canHold)
+        if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null && !canHold)
         {
             currentInteractable.Interact();
             isUsingItem = true;
         }
         else if (canHold && currentInteractable != null) 
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 isUsingItem = true;
                 currentInteractable.EnableHolding();
             }
-            else if (Input.GetMouseButtonUp(0))
+            else if (Input.GetKeyUp(KeyCode.E))
             {
                 isUsingItem = false;
                 currentInteractable.DisableHolding(); 
@@ -40,16 +43,26 @@ public class PlayerInteraction : MonoBehaviour
         }
 
     }
+    private void OnEnable()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.SetActivePlayerInteraction(this);
+    }
+    private void OnDisable()
+    {
+        if (UIManager.Instance != null)
+            UIManager.Instance.SetActivePlayerInteraction(null);
+    }
 
     void CheckInteraction()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-
         if (Physics.Raycast(ray, out RaycastHit hit, playerReach))
         {
 
             if (hit.collider.CompareTag("Interactable") && canInteract)
             {
+                inventoryQuickBar.canConsume = false;
                 Interactable newInteractable = hit.collider.GetComponent<Interactable>();
                 if (newInteractable.canHold)
                 {
@@ -69,11 +82,14 @@ public class PlayerInteraction : MonoBehaviour
 
                 if (newInteractable.enabled)
                 {
+                    isInteracting = true;
                     SetNewCurrentInteractable(newInteractable);
                 }
             }
             else
             {
+                isInteracting = false;
+                inventoryQuickBar.canConsume = true;
                 isUsingItem = false;
                 DisableCurrentInteractable();
             }
@@ -81,6 +97,8 @@ public class PlayerInteraction : MonoBehaviour
         }
         else
         {
+            isInteracting = false;
+            inventoryQuickBar.canConsume = true;
             isUsingItem = false;
             DisableCurrentInteractable();
         }

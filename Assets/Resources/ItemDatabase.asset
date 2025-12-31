@@ -255,14 +255,14 @@ MonoBehaviour:
       isFermentable: 1
   - type: 15
     prefab: {fileID: 6933662014861545656, guid: 3720a211ead4e19489bce3745f0f6214, type: 3}
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: dcf34c2db7195804d9bd8a2e6daeec12, type: 3}
     price: 10
     consumableData:
-      isFood: 0
-      foodAmount: 0
+      isFood: 1
+      foodAmount: -0.15
       isDrink: 0
       drinkAmount: 0
-      sound: {fileID: 0}
+      sound: {fileID: 8300000, guid: 0c3b327175728594da02abb03b38d668, type: 3}
     ingredientData:
       volume: 1
       sweetness: 0.5

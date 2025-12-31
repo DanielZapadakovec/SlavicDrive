@@ -22,7 +22,7 @@ public class CarAudioSystem : MonoBehaviour
     public GameObject defaultParticlePrefab;
 
     [Header("Audio Sources")]
-    [Tooltip("AudioSource pre prehrávanie zvuku terénu (nie na každom kolese!)")]
+    [Tooltip("AudioSource pre prehrávanie zvuku terénu")]
     public AudioSource terrainAudioSource;
     public AudioSource skidAudioSource;
     public float skidStartThreshold = 0.25f;
@@ -136,7 +136,7 @@ public class CarAudioSystem : MonoBehaviour
             if (!ps.isPlaying) ps.Play();
 
             // Skid zvuk (šmyk)
-            if (skidAudioSource != null)
+            if (skidAudioSource != null && carController.currentSpeed > 10)
             {
                 if (slip > skidStartThreshold)
                 {

@@ -89,13 +89,40 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Gameplay"",
             ""id"": ""7644f48b-ee37-423e-8c75-7c35545c5937"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
+                    ""name"": ""OnScroll"",
+                    ""type"": ""Value"",
                     ""id"": ""7976a3d6-6d95-43ba-9519-e084c382b899"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""NextSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e15f6e1-eb31-442f-9b2e-65cd4f61b293"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrevSlot"",
+                    ""type"": ""Button"",
+                    ""id"": ""8aec3487-ba7a-48d9-9995-8118aa35f89c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Consume"",
+                    ""type"": ""Button"",
+                    ""id"": ""d83a54b1-5b89-44f8-aabb-8d03ed4c0d0b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -106,11 +133,66 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ac6d930d-f072-4f8f-ae02-7a56dc3057dc"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""OnScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""984b384d-8ba2-42e8-a9f2-900d0c5e29b9"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""OnScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d9dbdda-f642-4169-a7d0-6e6a0628e45e"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""NextSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b3e4576-7948-4248-89fd-784507be405e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PrevSlot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e07dd977-e795-4606-a424-6c33ce62b30a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Consume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0cb190c-19f4-4b89-8a44-79ca79ab3594"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Consume"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -238,18 +320,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwitchCamera"",
+                    ""name"": ""Zoom"",
                     ""type"": ""Button"",
-                    ""id"": ""9a1db909-d00c-4f68-8429-05334d14d98a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Restart"",
-                    ""type"": ""Button"",
-                    ""id"": ""df6fff5d-c901-4e57-be3a-9302c349469e"",
+                    ""id"": ""4fa97bd0-bd49-422a-911c-0733b676db9b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -490,17 +563,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""568a48ee-65ec-491d-9788-dc4599d070a3"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Restart"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""376077f2-5949-4c1c-86b9-5d6828758470"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -611,28 +673,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e31d1e54-a715-4d85-a628-06c3765e6e97"",
-                    ""path"": ""<Keyboard>/v"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7c09b70a-8e5d-45bc-b5cc-bcc4cb39f9f1"",
-                    ""path"": ""<Gamepad>/select"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""3ee58ed3-11ac-4652-93a1-ca8d1e17408b"",
                     ""path"": ""<Keyboard>/leftAlt"",
                     ""interactions"": """",
@@ -650,6 +690,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StartCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8bbd11e-46b2-4c9e-821c-93c21cdff75c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""352c3000-2803-462d-94ed-eaea7fabb951"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -719,9 +781,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Newaction = m_Player.FindAction("New action", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_OnScroll = m_Gameplay.FindAction("OnScroll", throwIfNotFound: true);
+        m_Gameplay_NextSlot = m_Gameplay.FindAction("NextSlot", throwIfNotFound: true);
+        m_Gameplay_PrevSlot = m_Gameplay.FindAction("PrevSlot", throwIfNotFound: true);
+        m_Gameplay_Consume = m_Gameplay.FindAction("Consume", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
         m_Car_StartCar = m_Car.FindAction("StartCar", throwIfNotFound: true);
@@ -737,13 +802,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Car_HazardLights = m_Car.FindAction("HazardLights", throwIfNotFound: true);
         m_Car_LowBeamLight = m_Car.FindAction("LowBeamLight", throwIfNotFound: true);
         m_Car_HighBeamLight = m_Car.FindAction("HighBeamLight", throwIfNotFound: true);
-        m_Car_SwitchCamera = m_Car.FindAction("SwitchCamera", throwIfNotFound: true);
-        m_Car_Restart = m_Car.FindAction("Restart", throwIfNotFound: true);
+        m_Car_Zoom = m_Car.FindAction("Zoom", throwIfNotFound: true);
     }
 
     ~@InputActions()
     {
-        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputActions.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, InputActions.Gameplay.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Car.enabled, "This will cause a leak and performance issues, InputActions.Car.Disable() has not been called.");
     }
 
@@ -817,29 +881,44 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Newaction;
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
+    private readonly InputAction m_Gameplay_OnScroll;
+    private readonly InputAction m_Gameplay_NextSlot;
+    private readonly InputAction m_Gameplay_PrevSlot;
+    private readonly InputAction m_Gameplay_Consume;
     /// <summary>
-    /// Provides access to input actions defined in input action map "Player".
+    /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
-    public struct PlayerActions
+    public struct GameplayActions
     {
         private @InputActions m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public GameplayActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Player/Newaction".
+        /// Provides access to the underlying input action "Gameplay/OnScroll".
         /// </summary>
-        public InputAction @Newaction => m_Wrapper.m_Player_Newaction;
+        public InputAction @OnScroll => m_Wrapper.m_Gameplay_OnScroll;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/NextSlot".
+        /// </summary>
+        public InputAction @NextSlot => m_Wrapper.m_Gameplay_NextSlot;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/PrevSlot".
+        /// </summary>
+        public InputAction @PrevSlot => m_Wrapper.m_Gameplay_PrevSlot;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Consume".
+        /// </summary>
+        public InputAction @Consume => m_Wrapper.m_Gameplay_Consume;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -847,9 +926,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="GameplayActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -857,14 +936,23 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PlayerActions" />
-        public void AddCallbacks(IPlayerActions instance)
+        /// <seealso cref="GameplayActions" />
+        public void AddCallbacks(IGameplayActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
+            @OnScroll.started += instance.OnOnScroll;
+            @OnScroll.performed += instance.OnOnScroll;
+            @OnScroll.canceled += instance.OnOnScroll;
+            @NextSlot.started += instance.OnNextSlot;
+            @NextSlot.performed += instance.OnNextSlot;
+            @NextSlot.canceled += instance.OnNextSlot;
+            @PrevSlot.started += instance.OnPrevSlot;
+            @PrevSlot.performed += instance.OnPrevSlot;
+            @PrevSlot.canceled += instance.OnPrevSlot;
+            @Consume.started += instance.OnConsume;
+            @Consume.performed += instance.OnConsume;
+            @Consume.canceled += instance.OnConsume;
         }
 
         /// <summary>
@@ -873,21 +961,30 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PlayerActions" />
-        private void UnregisterCallbacks(IPlayerActions instance)
+        /// <seealso cref="GameplayActions" />
+        private void UnregisterCallbacks(IGameplayActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @OnScroll.started -= instance.OnOnScroll;
+            @OnScroll.performed -= instance.OnOnScroll;
+            @OnScroll.canceled -= instance.OnOnScroll;
+            @NextSlot.started -= instance.OnNextSlot;
+            @NextSlot.performed -= instance.OnNextSlot;
+            @NextSlot.canceled -= instance.OnNextSlot;
+            @PrevSlot.started -= instance.OnPrevSlot;
+            @PrevSlot.performed -= instance.OnPrevSlot;
+            @PrevSlot.canceled -= instance.OnPrevSlot;
+            @Consume.started -= instance.OnConsume;
+            @Consume.performed -= instance.OnConsume;
+            @Consume.canceled -= instance.OnConsume;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GameplayActions.UnregisterCallbacks(IGameplayActions)" />.
         /// </summary>
-        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-        public void RemoveCallbacks(IPlayerActions instance)
+        /// <seealso cref="GameplayActions.UnregisterCallbacks(IGameplayActions)" />
+        public void RemoveCallbacks(IGameplayActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -897,21 +994,21 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-        /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
-        public void SetCallbacks(IPlayerActions instance)
+        /// <seealso cref="GameplayActions.AddCallbacks(IGameplayActions)" />
+        /// <seealso cref="GameplayActions.RemoveCallbacks(IGameplayActions)" />
+        /// <seealso cref="GameplayActions.UnregisterCallbacks(IGameplayActions)" />
+        public void SetCallbacks(IGameplayActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
+    /// Provides a new <see cref="GameplayActions" /> instance referencing this action map.
     /// </summary>
-    public PlayerActions @Player => new PlayerActions(this);
+    public GameplayActions @Gameplay => new GameplayActions(this);
 
     // Car
     private readonly InputActionMap m_Car;
@@ -929,8 +1026,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Car_HazardLights;
     private readonly InputAction m_Car_LowBeamLight;
     private readonly InputAction m_Car_HighBeamLight;
-    private readonly InputAction m_Car_SwitchCamera;
-    private readonly InputAction m_Car_Restart;
+    private readonly InputAction m_Car_Zoom;
     /// <summary>
     /// Provides access to input actions defined in input action map "Car".
     /// </summary>
@@ -995,13 +1091,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @HighBeamLight => m_Wrapper.m_Car_HighBeamLight;
         /// <summary>
-        /// Provides access to the underlying input action "Car/SwitchCamera".
+        /// Provides access to the underlying input action "Car/Zoom".
         /// </summary>
-        public InputAction @SwitchCamera => m_Wrapper.m_Car_SwitchCamera;
-        /// <summary>
-        /// Provides access to the underlying input action "Car/Restart".
-        /// </summary>
-        public InputAction @Restart => m_Wrapper.m_Car_Restart;
+        public InputAction @Zoom => m_Wrapper.m_Car_Zoom;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1067,12 +1159,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @HighBeamLight.started += instance.OnHighBeamLight;
             @HighBeamLight.performed += instance.OnHighBeamLight;
             @HighBeamLight.canceled += instance.OnHighBeamLight;
-            @SwitchCamera.started += instance.OnSwitchCamera;
-            @SwitchCamera.performed += instance.OnSwitchCamera;
-            @SwitchCamera.canceled += instance.OnSwitchCamera;
-            @Restart.started += instance.OnRestart;
-            @Restart.performed += instance.OnRestart;
-            @Restart.canceled += instance.OnRestart;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
         }
 
         /// <summary>
@@ -1123,12 +1212,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @HighBeamLight.started -= instance.OnHighBeamLight;
             @HighBeamLight.performed -= instance.OnHighBeamLight;
             @HighBeamLight.canceled -= instance.OnHighBeamLight;
-            @SwitchCamera.started -= instance.OnSwitchCamera;
-            @SwitchCamera.performed -= instance.OnSwitchCamera;
-            @SwitchCamera.canceled -= instance.OnSwitchCamera;
-            @Restart.started -= instance.OnRestart;
-            @Restart.performed -= instance.OnRestart;
-            @Restart.canceled -= instance.OnRestart;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
         }
 
         /// <summary>
@@ -1228,19 +1314,40 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Gameplay" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
-    /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
-    public interface IPlayerActions
+    /// <seealso cref="GameplayActions.AddCallbacks(IGameplayActions)" />
+    /// <seealso cref="GameplayActions.RemoveCallbacks(IGameplayActions)" />
+    public interface IGameplayActions
     {
         /// <summary>
-        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "OnScroll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnOnScroll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "NextSlot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNextSlot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PrevSlot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPrevSlot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Consume" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnConsume(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Car" which allows adding and removing callbacks.
@@ -1341,18 +1448,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHighBeamLight(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "SwitchCamera" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Zoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSwitchCamera(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Restart" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRestart(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
 }

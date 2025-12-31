@@ -48,6 +48,7 @@ public class StorageInventory : MonoBehaviour
     {
         if (currentStorage != null)
         {
+
             currentStorage.storedItems.Clear();
 
             foreach (var s in slots)
@@ -58,6 +59,10 @@ public class StorageInventory : MonoBehaviour
                     currentStorage.storedItems.Add(clickable.itemType);
                 }
             }
+        }
+        if (currentStorage.onClose != null)
+        {
+            currentStorage.onClose.Invoke();
         }
         storageAnimator.SetBool("isOpen", false);
         isOpen = false;

@@ -7,11 +7,15 @@ using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
+    // === Exposed values for camera & effects ===
+    public float CurrentMotorTorque { get; private set; }
+    public float MaxMotorTorque => baseMotorForce * GetMaxGearMultiplier();
+    public bool IsShifting => isShifting;
     private InputActions controls;
 
     private float steering;
-    private float acceleration;
-    private float brake;
+    public float acceleration;
+    public float brake;
     private bool isHandBraking;
 
     private float currentSteerAngle, currentBrakeForce;
@@ -26,6 +30,7 @@ public class CarController : MonoBehaviour
     [Header("CarProps")]
     [SerializeField] private float baseMotorForce = 500f;
     [SerializeField] private float brakeForce = 1500f;
+    [SerializeField] private float motorBrakeForce = 15f;
     [SerializeField] private float handBrakeForce = 3000f;
     [SerializeField] private float maxSteerAngle = 30f;
     [SerializeField] private float shiftDelay = 0.3f;
@@ -158,13 +163,15 @@ public class CarController : MonoBehaviour
         UpdateWheels();
 
         if (isHandBraking) ApplyHandBraking();
+        GearShiftPulse = Mathf.MoveTowards(GearShiftPulse, 0f, Time.deltaTime * 4f);
     }
     #endregion
     private void HandleMotor()
     {
-        float torque = baseMotorForce * acceleration * gearPowerMultipliers[currentGear];
-        torque *= -1f;
+      float torque = baseMotorForce * acceleration * gearPowerMultipliers[currentGear];
+    torque *= -1f;
 
+         CurrentMotorTorque = Mathf.Abs(torque);
         if (currentGear > 1 && acceleration > 0)
         {
             float maxSpeedForGear = gearSpeeds[currentGear];
@@ -221,9 +228,9 @@ public class CarController : MonoBehaviour
 
     private void Slowdown()
     {
-        if (carRigidbody != null && acceleration == 0 && brake == 0 && !isHandBraking && currentGear < 0 && currentGear > 0)
+        if (carRigidbody != null && acceleration == 0 && brake == 0 && !isHandBraking)
         {
-            carRigidbody.velocity = Vector3.Lerp(carRigidbody.velocity, Vector3.zero, Time.deltaTime * 0.5f);
+            carRigidbody.velocity = Vector3.Lerp(carRigidbody.velocity, Vector3.zero, motorBrakeForce);
         }
     }
 
@@ -337,6 +344,7 @@ public class CarController : MonoBehaviour
         }
     }
 
+    public float GearShiftPulse { get; private set; }
     private void ShiftGear(int direction)
     {
         if (carInteractables.isSeated)
@@ -352,6 +360,7 @@ public class CarController : MonoBehaviour
     private IEnumerator GearShiftRoutine(int newGear, int direction)
     {
         isShifting = true;
+        GearShiftPulse = 1f;   // <-- pulse start
         engineSound.pitch = minPitch;
 
         if (direction > 0 && shiftUpSound != null) shiftingSound.PlayOneShot(shiftUpSound);
@@ -405,5 +414,12 @@ public class CarController : MonoBehaviour
                     break;
             }
         }
+    }
+    private float GetMaxGearMultiplier()
+    {
+        float max = 0f;
+        foreach (float g in gearPowerMultipliers)
+            if (g > max) max = g;
+        return max;
     }
 }

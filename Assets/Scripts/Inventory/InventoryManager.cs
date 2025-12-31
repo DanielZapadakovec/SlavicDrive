@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     public StorageInventory storageUI;
 
     private StorageObject currentStorage;
+
 
     private void Awake()
     {

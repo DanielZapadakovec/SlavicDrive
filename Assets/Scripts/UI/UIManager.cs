@@ -5,9 +5,27 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    public UIManager Instance;
+    public static UIManager Instance;
     [SerializeField]public Animator EKeyBindUI;
     [SerializeField]public Animator FKeyBindUI;
+
+    public InventoryQuickBar inventoryQuickBar;
+    public ItemGrabber itemGrabber;
+    public PlayerInteraction playerInteraction;
+
+    public void Update()
+    {
+        UpdateUIHints();
+    }
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public void SetActivePlayerInteraction(PlayerInteraction interaction)
+    {
+        playerInteraction = interaction;
+    }
 
     public void ShowEKeyBind(bool canShow)
     {
@@ -37,5 +55,16 @@ public class UIManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    void UpdateUIHints()
+    {
+        bool showE = itemGrabber.canPickUp || itemGrabber.canAssembly || playerInteraction.isInteracting;
+        ShowEKeyBind(showE);
+
+        int slotIndex = inventoryQuickBar.activeSlot;
+        bool hasItemInHand = inventoryQuickBar.slots[slotIndex].itemType != ItemType.None;
+        bool showF = !itemGrabber.canPickUp && hasItemInHand;
+        ShowFKeyBind(showF);
     }
 }

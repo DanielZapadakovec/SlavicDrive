@@ -45,6 +45,8 @@ public class CarInteractables : MonoBehaviour
     [SerializeField] private GameObject PlayerTransform;
     [SerializeField] private GameObject Car;
     [SerializeField] private Transform PlayerCameraPosition;
+    [SerializeField] private Transform exitPoint;
+
 
     public bool isSeated = false;
 
@@ -208,59 +210,58 @@ public class CarInteractables : MonoBehaviour
     }
     #endregion
     #region SitToCar
-  
-
-    public void SeatToCar()
+    public void SitToCar()
     {
         if (!isSeated)
         {
-            PlayerCamera.SetParent(this.transform);
+            // ======================
+            // SADNUTIE DO AUTA
+            // ======================
+
+            // skry hráča
             PlayerTransform.SetActive(false);
-            PlayerTransform.transform.SetParent(this.transform);
-            StartCoroutine(SmoothCameraTransition(PlayerCamera, carCamera.position, carCamera.rotation, () =>
-            {
-             PlayerCamera.gameObject.SetActive(false); 
-             carCamera.gameObject.SetActive(true);
-                
-             isSeated = true;
-            }));
+
+            // camera prepnutie
+            PlayerCamera.gameObject.SetActive(false);
+            carCamera.gameObject.SetActive(true);
+
+            // zarovnanie car kamery (žiadny tilt z minulosti)
+            carCamera.rotation = GetUprightRotation(carCamera.rotation);
+
+            // parent na auto (až PO rotácii)
+            carCamera.SetParent(this.transform, true);
+
+            isSeated = true;
         }
         else if (isSeated && isOpen)
         {
+            // camera prepnutie
             carCamera.gameObject.SetActive(false);
             PlayerCamera.gameObject.SetActive(true);
+
+            // reset parentingu
             PlayerTransform.transform.SetParent(null);
-            StartCoroutine(SmoothCameraTransition(PlayerCamera, PlayerCameraPosition.position, PlayerCameraPosition.rotation, () =>
-            {
-                PlayerTransform.SetActive(true);
-                PlayerCamera.SetParent(PlayerCameraPosition);
-                isSeated = false;
-            }));
+
+            // bezpečná pozícia a rotácia
+            Vector3 safeExitPos = exitPoint.position + Vector3.up;
+            Quaternion safeExitRot = GetUprightRotation(exitPoint.rotation);
+
+            PlayerTransform.transform.position = safeExitPos;
+            PlayerTransform.transform.rotation = safeExitRot;
+
+            PlayerCamera.SetParent(PlayerCameraPosition, false);
+            PlayerCamera.localPosition = Vector3.zero;
+            PlayerCamera.localRotation = Quaternion.identity;
+
+            PlayerTransform.SetActive(true);
+
+            isSeated = false;
         }
     }
-
-    private IEnumerator SmoothCameraTransition(Transform cam, Vector3 targetPos, Quaternion targetRot, System.Action onComplete)
+    private Quaternion GetUprightRotation(Quaternion source)
     {
-        Vector3 startPos = cam.position;
-        Quaternion startRot = cam.rotation;
-
-        float elapsed = 0f;
-
-        while (elapsed < transitionTime)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / transitionTime);
-
-            cam.position = Vector3.Lerp(startPos, targetPos, t);
-            cam.rotation = Quaternion.Slerp(startRot, targetRot, t);
-
-            yield return null;
-        }
-
-        cam.position = targetPos;
-        cam.rotation = targetRot;
-
-        onComplete?.Invoke();
+        Vector3 euler = source.eulerAngles;
+        return Quaternion.Euler(0f, euler.y, 0f);
     }
     #endregion
     #region Ignition
@@ -294,7 +295,6 @@ public class CarInteractables : MonoBehaviour
         // ak drží interactable → začať štartovanie
         if (ignitionInteractable.isHolding && !isStarting)
         {
-            Debug.Log("štartuje");
             startingRoutine = StartCoroutine(StartEngineHold());
         }
        else if (!ignitionInteractable.isHolding && isStarting)

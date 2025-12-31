@@ -291,7 +291,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b75c88da945e230429739740c8b1f102, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -386,9 +386,9 @@ GameObject:
   - component: {fileID: 5614614583920770948}
   - component: {fileID: 7953912917132530192}
   - component: {fileID: 368429320904596667}
-  - component: {fileID: 8300174362505139458}
   - component: {fileID: 5620528999340596393}
   - component: {fileID: 7321909756035640277}
+  - component: {fileID: 6882775312607831117}
   m_Layer: 0
   m_Name: FuelTanker
   m_TagString: Interactable
@@ -462,28 +462,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8300174362505139458
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631346052084685534}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8891187450674804462, guid: dd5d540c963326147b2c88108a34be25, type: 3}
 --- !u!114 &5620528999340596393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +589,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &6882775312607831117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631346052084685534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020113641, y: 0.28515083, z: 0.1997071}
+  m_Center: {x: -0.9375208, y: -0.5444813, z: 0.06954865}
 --- !u!1 &841098971575500132
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +652,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 068eb561b38fe1a4d9d8e551594b586d, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4ab75ff7e95e18b49b017cc1c4fc2de6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a9e5666a2f10e18468e106a676e7c97c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.05
   m_Pitch: 1
@@ -1300,15 +1299,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c95ba7023c9a1479d9703616835af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 3054346503370005865}
+  carController: {fileID: 5584930540427045474}
   sensitivity: 2
   minVerticalAngle: -60
   maxVerticalAngle: 60
-  carTransform: {fileID: 3511224640188915186}
-  zoomFOV: 30
-  defaultFOV: 60
-  zoomSpeed: 10
-  smoothZoomTime: 0.2
-  cam: {fileID: 3054346503370005865}
+  baseFOV: 60
+  maxThrottleFOVBoost: 6
+  brakeFOVReduction: 3
+  gearShiftFOVPulse: 3
+  fovSmoothTime: 0.25
 --- !u!114 &3464771960866667741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,6 +1327,9 @@ MonoBehaviour:
   interactableText: {fileID: 0}
   errorMessage: {fileID: 0}
   isUsingItem: 0
+  isInteracting: 0
+  uiManager: {fileID: 0}
+  inventoryQuickBar: {fileID: 0}
 --- !u!114 &6221565518821197518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1474,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b75c88da945e230429739740c8b1f102, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1844,7 +1847,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 766.6237, y: 8.79, z: 896.89417}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2312621009908262415}
@@ -1852,6 +1855,7 @@ Transform:
   - {fileID: 2197557322963062026}
   - {fileID: 3035107191208152517}
   - {fileID: 4157632784080605043}
+  - {fileID: 970356300093890682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5312495806485727494
@@ -1893,12 +1897,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c7f36346f03e540bf4ac8125bd1582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 0
+  brake: 0
   currentGear: 1
   currentSpeed: 0
   idleRPM: 900
   maxEngineRPM: 7000
   baseMotorForce: 500
   brakeForce: 1500
+  motorBrakeForce: 15
   handBrakeForce: 3000
   maxSteerAngle: 30
   shiftDelay: 0.3
@@ -1947,7 +1954,7 @@ MonoBehaviour:
   finalDriveRatio: 3.9
   gearText: {fileID: 0}
   carInteractables: {fileID: 8857028587414607728}
-  maxWheelRotation: 720
+  maxWheelRotation: 480
   steeringWheelSpeed: 300
   returnSpeed: 200
   carAssembly: {fileID: 4013111449800759247}
@@ -2058,10 +2065,10 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Car
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 3054346503370005865}
 --- !u!114 &4013111449800759247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2111,18 +2118,17 @@ MonoBehaviour:
   rearRight: {fileID: 7932585081034906612}
   terrainClips:
   - {fileID: 8300000, guid: e54eb95f3bbb6f24a83d139e67ccd1eb, type: 3}
-  - {fileID: 0}
   - {fileID: 8300000, guid: 160a8e1d728f6a042871767027cc5d5a, type: 3}
   terrainParticlePrefabs:
   - {fileID: 1000010715882420, guid: 14d81e2c407975245973a11cdfbeb902, type: 3}
   asphaltClip: {fileID: 8300000, guid: 160a8e1d728f6a042871767027cc5d5a, type: 3}
-  asphaltParticlePrefab: {fileID: 1000011945391522, guid: 78b71003e8b357d4bbf89c8b5e5e4f0e, type: 3}
+  asphaltParticlePrefab: {fileID: 1344314377593938, guid: 9e03786a9517b604d8e930182607a128, type: 3}
   defaultSurfaceClip: {fileID: 8300000, guid: 97ac29d0d98da9247b39fcdee7c110ec, type: 3}
-  defaultParticlePrefab: {fileID: 1000010715882420, guid: 14d81e2c407975245973a11cdfbeb902, type: 3}
+  defaultParticlePrefab: {fileID: 1344314377593938, guid: 9e03786a9517b604d8e930182607a128, type: 3}
   terrainAudioSource: {fileID: 1171287877380111242}
   skidAudioSource: {fileID: 5380747617091127903}
   skidStartThreshold: 0.2
-  skidMaxPitch: 1
+  skidMaxPitch: 0.4
   rearLeftWheelTransform: {fileID: 6751629509199449387}
   rearRightWheelTransform: {fileID: 1235480156122839409}
   particleBaseEmission: 1
@@ -2131,6 +2137,7 @@ MonoBehaviour:
   impactClips:
   - {fileID: 8300000, guid: 12467f7ae75f7804a99c7efd538910ad, type: 3}
   - {fileID: 8300000, guid: cd221e77f31fe1b439a00246300c7efb, type: 3}
+  - {fileID: 8300000, guid: b75c88da945e230429739740c8b1f102, type: 3}
 --- !u!1 &1908155319830696901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,6 +2690,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2585491627067690548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970356300093890682}
+  m_Layer: 11
+  m_Name: ExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &970356300093890682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585491627067690548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.336, y: 0, z: 0.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3511224640188915186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2746749797783249110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,11 +2815,11 @@ GameObject:
   - component: {fileID: 4154886737860102118}
   - component: {fileID: 1341877683201894158}
   - component: {fileID: 6802255441298933333}
-  - component: {fileID: 5749628166652847221}
   - component: {fileID: 3456467133103353798}
   - component: {fileID: 2548408635779214887}
   - component: {fileID: 4102700314315234998}
   - component: {fileID: 3104399271839465635}
+  - component: {fileID: 2783558244406546254}
   m_Layer: 0
   m_Name: Hood
   m_TagString: Interactable
@@ -2854,28 +2892,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5749628166652847221
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2790276096653157429}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3137129725661375301, guid: dd5d540c963326147b2c88108a34be25, type: 3}
 --- !u!82 &3456467133103353798
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3042,6 +3058,27 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &2783558244406546254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790276096653157429}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8296158, y: 1.051421, z: 0.25051612}
+  m_Center: {x: 0.00017065341, y: 0.44834563, z: -0.109580964}
 --- !u!1 &2816411653932632014
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,7 +3233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 0.5045948, b: 0, a: 1}
-  outlineWidth: 9
+  outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -3317,7 +3354,7 @@ GameObject:
   - component: {fileID: 4962890545198576186}
   - component: {fileID: 5325082746910259636}
   - component: {fileID: 4617956270720354712}
-  - component: {fileID: 4800839633565828045}
+  - component: {fileID: 7695177960837923527}
   m_Layer: 0
   m_Name: FrontLight2
   m_TagString: Untagged
@@ -3391,8 +3428,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4800839633565828045
-MeshCollider:
+--- !u!65 &7695177960837923527
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3409,10 +3446,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8998513166696445340, guid: dd5d540c963326147b2c88108a34be25, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.19988382, y: 0.10808389, z: 0.20218377}
+  m_Center: {x: -0.66145, y: 1.9464496, z: -0.009899042}
 --- !u!1 &3145450340324275460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,7 +3656,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b75c88da945e230429739740c8b1f102, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3769,8 +3805,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -119252374378251377, guid: dd5d540c963326147b2c88108a34be25, type: 3}
-  - {fileID: 989911640901578557, guid: dd5d540c963326147b2c88108a34be25, type: 3}
+  - {fileID: 2100000, guid: 197404a7ba4ae6441a36eeec58ee118a, type: 2}
+  - {fileID: 2100000, guid: 197404a7ba4ae6441a36eeec58ee118a, type: 2}
   - {fileID: 4266802919584767656, guid: dd5d540c963326147b2c88108a34be25, type: 3}
   - {fileID: -8561865547933264509, guid: dd5d540c963326147b2c88108a34be25, type: 3}
   m_StaticBatchInfo:
@@ -4281,7 +4317,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b75c88da945e230429739740c8b1f102, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4728,8 +4764,8 @@ MeshRenderer:
   - {fileID: 4266802919584767656, guid: dd5d540c963326147b2c88108a34be25, type: 3}
   - {fileID: 1331144291575188466, guid: dd5d540c963326147b2c88108a34be25, type: 3}
   - {fileID: -7455934940137396454, guid: dd5d540c963326147b2c88108a34be25, type: 3}
-  - {fileID: -119252374378251377, guid: dd5d540c963326147b2c88108a34be25, type: 3}
-  - {fileID: 2100000, guid: c47c928d6dec90f4c8cb0ec30e6f94a8, type: 2}
+  - {fileID: 2100000, guid: 197404a7ba4ae6441a36eeec58ee118a, type: 2}
+  - {fileID: -8686616365065311154, guid: dd5d540c963326147b2c88108a34be25, type: 3}
   - {fileID: 1507296440917307615, guid: dd5d540c963326147b2c88108a34be25, type: 3}
   - {fileID: 2100000, guid: 9c6ed6c635466f348ba1b0434b4987c6, type: 2}
   - {fileID: 7160293159896546898, guid: dd5d540c963326147b2c88108a34be25, type: 3}
@@ -5253,7 +5289,7 @@ GameObject:
   - component: {fileID: 1854717423960490054}
   - component: {fileID: 4979520273848202655}
   - component: {fileID: 135218460626985651}
-  - component: {fileID: 7339255089534900471}
+  - component: {fileID: 1838517394207288961}
   m_Layer: 0
   m_Name: FrontLight1
   m_TagString: Untagged
@@ -5328,8 +5364,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7339255089534900471
-MeshCollider:
+--- !u!65 &1838517394207288961
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5346,10 +5382,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 9058406384642093232, guid: dd5d540c963326147b2c88108a34be25, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.19861351, y: 0.10681358, z: 0.20091346}
+  m_Center: {x: 0.66145, y: 1.9464496, z: -0.009899042}
 --- !u!1 &6491328487249949958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5713,6 +5748,21 @@ MonoBehaviour:
   storageName: Trunk
   slotCount: 8
   storedItems: 
+  onClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8857028587414607728}
+        m_TargetAssemblyTypeName: CarInteractables, Assembly-CSharp
+        m_MethodName: TrunkInteract
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!64 &7174272674072404691
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7279,7 +7329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3205c76c6f12a84eb34605998df3a73, type: 2}
+  - {fileID: 2100000, guid: 85ae710dac2c0194f97a8590e3b2e771, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

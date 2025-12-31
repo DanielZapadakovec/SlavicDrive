@@ -141,4 +141,9 @@ public class DayNightCycle : MonoBehaviour
     {
         timeMultiplier = value;
     }
+    public DateTime GetCurrentTime()
+    {
+        return currentTime;
+    }
+
 }

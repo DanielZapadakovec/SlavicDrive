@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
+        pauseUI.GetComponent<Animator>().Play("PauseMenuFade");
         SetScriptsEnabled(false);
         isPaused = true;
         Cursor.lockState = CursorLockMode.None;

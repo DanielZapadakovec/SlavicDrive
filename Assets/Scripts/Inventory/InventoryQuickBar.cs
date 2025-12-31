@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class InventoryQuickBar : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class InventoryQuickBar : MonoBehaviour
         public ConsumableData consumableData;
     }
 
+    [Header("Slots")]
     public InventorySlot[] slots = new InventorySlot[4];
     public Transform[] slotParents;
     public int activeSlot = 0;
 
+    [Header("Input Actions (NEW INPUT SYSTEM)")]
+    public InputActionReference scrollSlotAction;   // Mouse wheel
+    public InputActionReference nextSlotAction;     // RB
+    public InputActionReference prevSlotAction;     // LB
+    public InputActionReference consumeAction;      // E / A
 
     [Header("Prefabs")]
     public GameObject itemUIPrefab;
@@ -30,34 +37,101 @@ public class InventoryQuickBar : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource audioProps;
+
+    public bool canConsume;
+
+    #region Unity Lifecycle
+
+    private void OnEnable()
+    {
+        scrollSlotAction.action.Enable();
+        nextSlotAction.action.Enable();
+        prevSlotAction.action.Enable();
+        consumeAction.action.Enable();
+
+        scrollSlotAction.action.performed += OnScroll;
+        nextSlotAction.action.performed += _ => ChangeSlot(1);
+        prevSlotAction.action.performed += _ => ChangeSlot(-1);
+    }
+
+    private void OnDisable()
+    {
+        scrollSlotAction.action.performed -= OnScroll;
+
+        scrollSlotAction.action.Disable();
+        nextSlotAction.action.Disable();
+        prevSlotAction.action.Disable();
+        consumeAction.action.Disable();
+    }
+
     private void Start()
     {
         for (int i = 0; i < slots.Length; i++)
             ClearSlot(i);
+
         UpdateUIHighlight();
+        UpdateHeldItem();
     }
 
     private void Update()
     {
-        HandleSlotSwitch();
+        HandleKeyboardFallback();
         CheckIfItemStillExists();
-        ConsumeActiveItem();
+        if (canConsume) { ConsumeActiveItem(); }
+
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.rightShoulder.wasPressedThisFrame)
+                Debug.Log("RB pressed");
+
+            if (Gamepad.current.leftShoulder.wasPressedThisFrame)
+                Debug.Log("LB pressed");
+        }
+    
+}
+
+    #endregion
+
+    #region Slot Switching
+
+    private void OnScroll(InputAction.CallbackContext ctx)
+    {
+        float scroll = ctx.ReadValue<Vector2>().y;
+
+        if (scroll > 0f)
+            ChangeSlot(1);
+        else if (scroll < 0f)
+            ChangeSlot(-1);
     }
 
-    private void HandleSlotSwitch()
+    private void HandleKeyboardFallback()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SetActiveSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SetActiveSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SetActiveSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) SetActiveSlot(3);
+        if (Keyboard.current.digit1Key.wasPressedThisFrame) SetActiveSlot(0);
+        if (Keyboard.current.digit2Key.wasPressedThisFrame) SetActiveSlot(1);
+        if (Keyboard.current.digit3Key.wasPressedThisFrame) SetActiveSlot(2);
+        if (Keyboard.current.digit4Key.wasPressedThisFrame) SetActiveSlot(3);
+    }
+
+    private void ChangeSlot(int direction)
+    {
+        activeSlot = (activeSlot + direction + slots.Length) % slots.Length;
+        UpdateUIHighlight();
+        UpdateHeldItem();
     }
 
     public void SetActiveSlot(int index)
     {
+        if (index < 0 || index >= slots.Length)
+            return;
+
         activeSlot = index;
         UpdateUIHighlight();
         UpdateHeldItem();
     }
+
+    #endregion
+
+    #region UI
 
     private void UpdateUIHighlight()
     {
@@ -68,6 +142,41 @@ public class InventoryQuickBar : MonoBehaviour
                 img.color = (i == activeSlot) ? activeColor : normalColor;
         }
     }
+
+    #endregion
+
+    #region Held Item
+
+    private void UpdateHeldItem()
+    {
+        if (currentHeldItem != null)
+            Destroy(currentHeldItem);
+
+        InventorySlot slot = slots[activeSlot];
+        if (slot.itemType == ItemType.None)
+            return;
+
+        GameObject prefab = ItemDatabase.GetPrefab(slot.itemType);
+        if (prefab == null)
+            return;
+
+        currentHeldItem = Instantiate(prefab, handTransform);
+        currentHeldItem.transform.localPosition = Vector3.zero;
+        currentHeldItem.transform.localRotation = Quaternion.identity;
+
+        if (currentHeldItem.TryGetComponent(out Rigidbody rb))
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
+
+        if (currentHeldItem.TryGetComponent(out Collider col))
+            col.enabled = false;
+    }
+
+    #endregion
+
+    #region Inventory Logic
 
     public void SetSlot(int index, ItemType type, Sprite icon, ConsumableData consumable)
     {
@@ -101,31 +210,6 @@ public class InventoryQuickBar : MonoBehaviour
             UpdateHeldItem();
     }
 
-    private void UpdateHeldItem()
-    {
-        if (currentHeldItem != null)
-            Destroy(currentHeldItem);
-
-        var slot = slots[activeSlot];
-        if (slot.itemType == ItemType.None) return;
-
-        GameObject prefab = ItemDatabase.GetPrefab(slot.itemType);
-        if (prefab != null)
-        {
-            currentHeldItem = Instantiate(prefab, handTransform);
-            currentHeldItem.transform.localPosition = Vector3.zero;
-            currentHeldItem.transform.localRotation = Quaternion.identity;
-
-            if (currentHeldItem.TryGetComponent(out Rigidbody rb))
-            {
-                rb.useGravity = false;
-                rb.isKinematic = true;
-            }
-
-            if (currentHeldItem.TryGetComponent(out Collider col))
-                col.enabled = false;
-        }
-    }
     private void CheckIfItemStillExists()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -140,41 +224,73 @@ public class InventoryQuickBar : MonoBehaviour
             {
                 Transform child = slotParents[i].GetChild(0);
                 ClickableItem draggable = child.GetComponent<ClickableItem>();
+
                 if (draggable != null)
                 {
                     slots[i].itemType = draggable.itemType;
                     slots[i].consumableData = ItemDatabase.GetConsumableData(draggable.itemType);
-
                     slots[i].itemPrefabInstance = child.gameObject;
                 }
             }
         }
     }
+
     public bool TryPickUpItem(ItemID item, Transform dropPoint, Camera cam)
     {
-        int slot = activeSlot;
+        int freeSlot = GetFirstFreeSlotIndex();
 
-        if (slots[slot].itemType != ItemType.None)
+        ItemType newType = item.itemType;
+        Sprite icon = ItemDatabase.GetIcon(newType);
+        ConsumableData consumable = ItemDatabase.GetConsumableData(newType);
+
+        // =========================
+        // EXISTUJE VOĽNÝ SLOT
+        // =========================
+        if (freeSlot != -1)
         {
-            GameObject oldObj = ItemDatabase.SpawnItem(slots[slot].itemType, dropPoint.position);
+            SetSlot(freeSlot, newType, icon, consumable);
+            Destroy(item.gameObject);
+            return true;
+        }
+
+        // =========================
+        // INVENTÁR PLNÝ → VYHOĎ AKTÍVNY SLOT
+        // =========================
+        int slotToReplace = activeSlot;
+
+        // vyhoď starý item
+        if (slots[slotToReplace].itemType != ItemType.None)
+        {
+            GameObject oldObj = ItemDatabase.SpawnItem(
+                slots[slotToReplace].itemType,
+                dropPoint.position
+            );
+
             if (oldObj.TryGetComponent<Rigidbody>(out Rigidbody rb))
                 rb.AddForce(cam.transform.forward * 2f, ForceMode.Impulse);
         }
 
-        ItemType type = item.itemType;
-        Sprite icon = ItemDatabase.GetIcon(type);
-        ConsumableData consumable = ItemDatabase.GetConsumableData(type);
-
-        SetSlot(slot, type, icon, consumable);
+        // nastav nový item do aktívneho slotu
+        SetSlot(slotToReplace, newType, icon, consumable);
         Destroy(item.gameObject);
 
         return true;
+    }
+    private int GetFirstFreeSlotIndex()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].itemType == ItemType.None)
+                return i;
+        }
+        return -1;
     }
 
     public void DropActiveItem(Transform dropPoint, Camera cam)
     {
         int slot = activeSlot;
-        if (slots[slot].itemType == ItemType.None) return;
+        if (slots[slot].itemType == ItemType.None)
+            return;
 
         GameObject dropObj = ItemDatabase.SpawnItem(slots[slot].itemType, dropPoint.position);
         if (dropObj.TryGetComponent<Rigidbody>(out Rigidbody rb))
@@ -183,34 +299,51 @@ public class InventoryQuickBar : MonoBehaviour
         ClearSlot(slot);
     }
 
-    public void ConsumeActiveItem()
-    {       
-        int slotIndex = activeSlot;
-        var data = slots[slotIndex].consumableData;
-        if (data == null || (!data.isDrink && !data.isFood)) return;
+    #endregion
 
-        bool canConsume = true;
+    #region Consume
+
+    private void ConsumeActiveItem()
+    {
+        InventorySlot slot = slots[activeSlot];
+        if (slot.consumableData == null)
+            return;
+
+        ConsumableData data = slot.consumableData;
+        if (!data.isFood && !data.isDrink)
+            return;
 
         PlayerStatsSystem stats = FindAnyObjectByType<PlayerStatsSystem>();
-        if (stats == null) return;
-        uiManager.ShowEKeyBind(canConsume);
-        if (Input.GetKeyDown(KeyCode.E))
+        if (stats == null)
+            return;
+
+        uiManager.ShowEKeyBind(true);
+
+        if (consumeAction.action.WasPressedThisFrame())
         {
-            if (data.isFood) stats.AddHunger(data.foodAmount);
-            if (data.isDrink) stats.AddThirst(data.drinkAmount);
-            if (data.sound != null && !audioProps.isPlaying)
-            {
+            if (data.isFood)
+                stats.AddHunger(data.foodAmount);
+
+            if (data.isDrink)
+                stats.AddThirst(data.drinkAmount);
+
+            if (data.sound != null && audioProps != null && !audioProps.isPlaying)
                 audioProps.PlayOneShot(data.sound);
-            }
-            
-            ClearSlot(slotIndex);
-            canConsume = false;
+
+            ClearSlot(activeSlot);
         }
     }
+
+    #endregion
+
+    #region Helpers
+
     public bool HasFreeSlot()
     {
         foreach (var s in slotParents)
-            if (s.childCount == 0) return true;
+            if (s.childCount == 0)
+                return true;
+
         return false;
     }
 
@@ -245,4 +378,6 @@ public class InventoryQuickBar : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

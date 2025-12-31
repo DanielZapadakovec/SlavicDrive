@@ -139,7 +139,7 @@ MonoBehaviour:
           isIconRecursive: 0
           isColorRecursive: 0
         - colorIndex: 4
-          iconNameOrGuid: Folder Icon
+          iconNameOrGuid: AudioSource Icon
           isIconRecursive: 0
           isColorRecursive: 1
         - colorIndex: 0

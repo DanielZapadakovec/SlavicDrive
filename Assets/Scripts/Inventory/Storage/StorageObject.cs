@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StorageObject : MonoBehaviour
 {
@@ -9,11 +11,13 @@ public class StorageObject : MonoBehaviour
     public List<ItemType> storedItems = new List<ItemType>();
 
     private bool isOpen = false;
+    public UnityEvent onClose;
 
     public void Interact()
     {
         if (isOpen)
         {
+
             CloseStorage();
         }
         else
