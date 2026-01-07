@@ -16,6 +16,8 @@ public class CarAssembly : MonoBehaviour
         public ParticleSystem installParticles;
         public AudioSource installSound;
 
+        public Interactable interactable;
+
         public bool isInstalled = false;
         [HideInInspector] public Renderer previewRenderer;
     }
@@ -46,6 +48,12 @@ public class CarAssembly : MonoBehaviour
                 if (slot.partType == type && !slot.isInstalled && slot.transparentModel != null)
                 {
                     slot.transparentModel.SetActive(true);
+                    slot.interactable = slot.transparentModel.GetComponent<Interactable>();
+                    if (slot.interactable  != null)
+                    {
+                        slot.interactable.enabled =false;
+                    }
+                        
                     if (slot.previewRenderer != null && slot.previewMaterial != null)
                     {
                         slot.previewRenderer.sharedMaterial = slot.previewMaterial;
@@ -76,6 +84,11 @@ public class CarAssembly : MonoBehaviour
                 }
 
                     slot.isInstalled = true;
+                if (slot.interactable != null)
+                {
+                    slot.interactable = slot.transparentModel.GetComponent<Interactable>();
+                    slot.interactable.enabled = true;
+                }
                 if (slot.installParticles != null) slot.installParticles.Play();
                 if (slot.installSound != null) slot.installSound.Play();
                 return true;

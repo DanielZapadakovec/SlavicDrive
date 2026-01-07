@@ -18,6 +18,7 @@ public class RaceManager : MonoBehaviour
     public string playerResult = "";
 
     public GameObject raceEntryZone;
+    public PlayerStatsSystem playerStatsSystem;
 
     private void Awake()
     {
@@ -128,6 +129,7 @@ public class RaceManager : MonoBehaviour
         if (!disq)
         {
             results.Add(new RaceResult("Player", raceTime));
+            playerStatsSystem.AddMoney(1000);
         }
         else
         {

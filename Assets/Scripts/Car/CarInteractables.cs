@@ -50,8 +50,6 @@ public class CarInteractables : MonoBehaviour
 
     public bool isSeated = false;
 
-    private Vector3 savedCamPos;
-    private Quaternion savedCamRot;
 
     [SerializeField] private float transitionTime = 1.5f;
 
@@ -451,7 +449,7 @@ public class CarInteractables : MonoBehaviour
                     fuelFilling.Play();
                 }
                 fuelLevel += fillingSpeed;
-                playerStatsSystem.SubtractMoney(0.005f);
+                playerStatsSystem.SubtractMoney(0.5f);
                 progressBarBackground.gameObject.SetActive(true);
                 progressBar.fillAmount = fuelLevel / 100;
             }
