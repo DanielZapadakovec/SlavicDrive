@@ -18,6 +18,7 @@ public enum ItemType
     Apple = 15,
     FullJar = 16,
     Jar = 17,
-    Sugar = 18
+    Sugar = 18,
+    WaterBottle = 19
        
 }

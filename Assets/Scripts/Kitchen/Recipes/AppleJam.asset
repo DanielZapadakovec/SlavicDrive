@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ce4f942d6d9744ba2dccf769f44cfd, type: 3}
   m_Name: AppleJam
   m_EditorClassIdentifier: 
-  resultItem: 16
+  perfectResultItem: 16
+  imperfectResultItem: 16
   cookTime: 30
   targetTemperature: 100
   temperatureTolerance: 10
   requiredIngredients: 0f0000000f0000000f00000012000000
+  emptyJarItem: 17

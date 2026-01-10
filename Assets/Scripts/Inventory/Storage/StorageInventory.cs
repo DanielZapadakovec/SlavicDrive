@@ -9,7 +9,7 @@ public class StorageInventory : MonoBehaviour
     public GameObject itemUIPrefab;
     public GameObject slotUIPrefab;
 
-    private StorageObject currentStorage;
+    public StorageObject currentStorage;
     private List<Transform> slots = new List<Transform>();
     public Animator storageAnimator;
     public static bool isOpen;

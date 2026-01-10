@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour
     public InventoryQuickBar inventoryQuickBar;
     public ItemGrabber itemGrabber;
     public PlayerInteraction playerInteraction;
+    public Text errorMessage;
 
     public void Update()
     {
@@ -66,5 +68,10 @@ public class UIManager : MonoBehaviour
         bool hasItemInHand = inventoryQuickBar.slots[slotIndex].itemType != ItemType.None;
         bool showF = !itemGrabber.canPickUp && hasItemInHand;
         ShowFKeyBind(showF);
+    }
+
+    public void ShowErrorMessage(string message)
+    {
+        errorMessage.text = message;
     }
 }

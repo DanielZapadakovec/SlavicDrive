@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ShopItemInteractable : MonoBehaviour
 {
-    public ItemType itemType;              // vyber v inšpektore ktorý item to je
+    public ItemType itemType;
     private ShopManager shopManager;
 
     public void Start()

@@ -79,7 +79,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 4
     prefab: {fileID: 8514083756800495459, guid: 5bda4e2ba2f56fd4c8e039a3d17de785, type: 3}
-    icon: {fileID: 21300000, guid: 91f2ce6e45c651a44aca23ec3f6c2db1, type: 3}
+    icon: {fileID: 21300000, guid: e36f287eff27e0e438f357cd1d722bc7, type: 3}
     price: 150
     consumableData:
       isFood: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 5
     prefab: {fileID: 4918367024213678658, guid: c0a0e653f9a3cf6469fd308273096c82, type: 3}
-    icon: {fileID: 21300000, guid: b77b8dc0503acdf4a9810732fe84c87d, type: 3}
+    icon: {fileID: 21300000, guid: 4bdc3bb0f92dd6342a789e3d60dfe274, type: 3}
     price: 10
     consumableData:
       isFood: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 9
     prefab: {fileID: 7343254880248413259, guid: a69789dcf5c6e2d478ce1f57a8ff3b0c, type: 3}
-    icon: {fileID: 21300000, guid: ff9e3800ff32b02409de12c8720ba3aa, type: 3}
+    icon: {fileID: 21300000, guid: 59ab91a21bb07654e91bce179d5fac18, type: 3}
     price: 10
     consumableData:
       isFood: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 10
     prefab: {fileID: 4111660614666749678, guid: 2db534897e617174284641241de758de, type: 3}
-    icon: {fileID: 21300000, guid: d19f1405b80919a43940104680c545bb, type: 3}
+    icon: {fileID: 21300000, guid: 01d24f799ff9df0488dd83240b9581d1, type: 3}
     price: 10
     consumableData:
       isFood: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
       potentialAlcohol: 0.08
       isFermentable: 1
   - type: 13
-    prefab: {fileID: 473957316692578105, guid: 740b0dab18a722c49be2eb5cb75ff78b, type: 3}
-    icon: {fileID: 21300000, guid: a286c334e8811c046b91c891c9e4277f, type: 3}
+    prefab: {fileID: 473957316692578105, guid: e3cce2f8faa382b4e841f3291d8c2439, type: 3}
+    icon: {fileID: 21300000, guid: 560c44aa2550c1c428c97a1320011586, type: 3}
     price: 10
     consumableData:
       isFood: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 15
     prefab: {fileID: 6933662014861545656, guid: 3720a211ead4e19489bce3745f0f6214, type: 3}
-    icon: {fileID: 21300000, guid: dcf34c2db7195804d9bd8a2e6daeec12, type: 3}
+    icon: {fileID: 21300000, guid: a60cbc094773feb46810d18ba8236898, type: 3}
     price: 10
     consumableData:
       isFood: 1
@@ -270,8 +270,8 @@ MonoBehaviour:
       potentialAlcohol: 0.08
       isFermentable: 1
   - type: 16
-    prefab: {fileID: 0}
-    icon: {fileID: 0}
+    prefab: {fileID: 2940586540591542493, guid: 9ec967d7815420a43b7b6a1a736ade74, type: 3}
+    icon: {fileID: 21300000, guid: 81e699c095cc78c4da4f1c758cfd3711, type: 3}
     price: 10
     consumableData:
       isFood: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 17
     prefab: {fileID: 6167840459595178379, guid: 6c8a45da743e5304b99e87ef055bdba6, type: 3}
-    icon: {fileID: 21300000, guid: 747de1aca727c4946b80e8df3044b02b, type: 3}
+    icon: {fileID: 21300000, guid: c105f3c754768974ca7a8e06d5a23cd1, type: 3}
     price: 5
     consumableData:
       isFood: 0
@@ -302,14 +302,30 @@ MonoBehaviour:
       potentialAlcohol: 0.08
       isFermentable: 1
   - type: 18
-    prefab: {fileID: 2958608919653533718, guid: 65a64e3cea34df84c90420bfba91ad7c, type: 3}
-    icon: {fileID: 21300000, guid: eac6b505477f15f4db22a01b52f7f133, type: 3}
+    prefab: {fileID: 5388796276684106650, guid: 62892ea0379133641849c59c4a497fb5, type: 3}
+    icon: {fileID: 21300000, guid: f4278bcfc5899d04495ba41a0a085910, type: 3}
     price: 25
     consumableData:
       isFood: 0
       foodAmount: 0
       isDrink: 0
       drinkAmount: 0
+      sound: {fileID: 0}
+    ingredientData:
+      volume: 1
+      sweetness: 0.5
+      acidity: 0.1
+      potentialAlcohol: 0.08
+      isFermentable: 1
+  - type: 19
+    prefab: {fileID: 5196499117579488218, guid: 1f899abe03037134282b32fdec0b2e28, type: 3}
+    icon: {fileID: 0}
+    price: 10
+    consumableData:
+      isFood: 0
+      foodAmount: 0
+      isDrink: 1
+      drinkAmount: -0.2
       sound: {fileID: 0}
     ingredientData:
       volume: 1

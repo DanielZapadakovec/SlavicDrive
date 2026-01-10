@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - Asphalt
   - Car
+  - IconsCreationCamera
   layers:
   - Default
   - TransparentFX

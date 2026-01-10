@@ -19,7 +19,7 @@ public class CookingSystem : MonoBehaviour
     public GameObject waterUI;
     public GameObject cookingUI;
 
-    private List<ItemType> currentIngredients = new List<ItemType>();
+    public List<ItemType> currentIngredients = new List<ItemType>();
     private RecipeData activeRecipe;
 
     private CookingState state = CookingState.Idle;
@@ -48,10 +48,19 @@ public class CookingSystem : MonoBehaviour
             return;
         }
 
-        if (CanCook())
+        if (!CanCook())
         {
-            StartWaterPhase();
+            UIManager.Instance.ShowErrorMessage("Missing or wrong ingredients");
+            return;
         }
+
+        if (outputStorage.CountItem(ItemType.Jar) <= 0)
+        {
+            UIManager.Instance.ShowErrorMessage("You need empty jars to cook!");
+            return;
+        }
+
+        StartWaterPhase();
     }
     // =========================
     // INGREDIENTS
@@ -157,10 +166,23 @@ public class CookingSystem : MonoBehaviour
             Mathf.Abs(temperatureMiniGame.temperature - activeRecipe.targetTemperature)
             <= activeRecipe.temperatureTolerance;
 
-        ItemType result = activeRecipe.resultItem;
-        outputStorage.storedItems.Add(result);
+        int jarCount = outputStorage.CountItem(activeRecipe.emptyJarItem);
 
-        Debug.Log(perfect ? "Perfect Jam!" : "Imperfect Jam");
+        outputStorage.RemoveItems(activeRecipe.emptyJarItem, jarCount);
+
+        ItemType resultItem = perfect
+            ? activeRecipe.perfectResultItem
+            : activeRecipe.imperfectResultItem;
+
+        for (int i = 0; i < jarCount; i++)
+        {
+            outputStorage.storedItems.Add(resultItem);
+        }
+
+        Debug.Log(perfect
+            ? $"Perfect Jam x{jarCount}"
+            : $"Imperfect Jam x{jarCount}");
+
         PlayerController.SwitchingCameraMovement();
         cookingCamera.gameObject.SetActive(false);
         player.SetActive(true);

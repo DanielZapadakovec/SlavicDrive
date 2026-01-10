@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: Lens 1
   m_EditorClassIdentifier: 
   elements:
-  - position: 0
+  - visible: 1
+    position: 0
     positionOffset: {x: 0, y: 0}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 1
+    m_LocalIntensity: 1
     lensFlareTexture: {fileID: 0}
     uniformScale: 20
     sizeXY: {x: 1, y: 1}
     allowMultipleElement: 0
-    count: 5
+    m_Count: 5
     preserveAspectRatio: 0
     rotation: 0
-    tint: {r: 1, g: 1, b: 1, a: 0.5}
+    tint: {r: 0.6698113, g: 0.6149106, b: 0.0031594948, a: 0.5}
     blendMode: 0
     autoRotate: 0
     flareType: 1
@@ -109,9 +110,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -142,21 +144,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.652
-    edgeOffset: 1
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.652
+    m_EdgeOffset: 1
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: 0
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: 0
     positionOffset: {x: 0, y: 0}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.05
+    m_LocalIntensity: 0.05
     lensFlareTexture: {fileID: 0}
     uniformScale: 1
     sizeXY: {x: 36.8348, y: 2.2294}
     allowMultipleElement: 0
-    count: 5
+    m_Count: 5
     preserveAspectRatio: 0
     rotation: 16.37
     tint: {r: 0.7019608, g: 0.83921576, b: 1, a: 0.5}
@@ -243,9 +271,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -276,21 +305,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 1
-    edgeOffset: 1
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 1
+    m_EdgeOffset: 1
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: 0
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: 0
     positionOffset: {x: 0, y: 0}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.05
+    m_LocalIntensity: 0.05
     lensFlareTexture: {fileID: 0}
     uniformScale: 1
     sizeXY: {x: 21.6, y: 1.1}
     allowMultipleElement: 0
-    count: 5
+    m_Count: 5
     preserveAspectRatio: 0
     rotation: 4.8
     tint: {r: 1, g: 1, b: 1, a: 0.5}
@@ -377,9 +432,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -410,21 +466,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 1
-    edgeOffset: 1
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 1
+    m_EdgeOffset: 1
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: -0.1
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: -0.1
     positionOffset: {x: 0, y: 0}
     angularOffset: -8
     translationScale: {x: 1, y: 1}
-    localIntensity: 1
+    m_LocalIntensity: 1
     lensFlareTexture: {fileID: 0}
     uniformScale: 0.25
     sizeXY: {x: 1, y: 1}
     allowMultipleElement: 1
-    count: 2
+    m_Count: 2
     preserveAspectRatio: 0
     rotation: 0
     tint: {r: 1, g: 1, b: 1, a: 0.5}
@@ -511,9 +593,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -544,21 +627,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 1
-    edgeOffset: 0.776
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 1
+    m_EdgeOffset: 0.776
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: -0.1
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: -0.1
     positionOffset: {x: 0, y: 0}
     angularOffset: 8
     translationScale: {x: 1, y: 1}
-    localIntensity: 1
+    m_LocalIntensity: 1
     lensFlareTexture: {fileID: 0}
     uniformScale: 0.25
     sizeXY: {x: 1, y: 1}
     allowMultipleElement: 1
-    count: 2
+    m_Count: 2
     preserveAspectRatio: 0
     rotation: 0
     tint: {r: 1, g: 1, b: 1, a: 0.5}
@@ -645,9 +754,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -678,21 +788,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 1
-    edgeOffset: 0.776
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 1
+    m_EdgeOffset: 0.776
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: -0.25
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: -0.25
     positionOffset: {x: 0, y: 0}
     angularOffset: 5.12
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.24
+    m_LocalIntensity: 0.24
     lensFlareTexture: {fileID: 0}
     uniformScale: 1
     sizeXY: {x: 1.96, y: 1}
     allowMultipleElement: 0
-    count: 5
+    m_Count: 5
     preserveAspectRatio: 0
     rotation: 90
     tint: {r: 1, g: 0.95294124, b: 0.40000004, a: 0.5}
@@ -779,9 +915,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -812,21 +949,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.7
-    edgeOffset: 1
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.7
+    m_EdgeOffset: 1
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: -0.25
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: -0.25
     positionOffset: {x: 0, y: 0}
     angularOffset: -14.67
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.24
+    m_LocalIntensity: 0.24
     lensFlareTexture: {fileID: 0}
     uniformScale: 1
     sizeXY: {x: 1.96, y: 1}
     allowMultipleElement: 0
-    count: 5
+    m_Count: 5
     preserveAspectRatio: 0
     rotation: 90
     tint: {r: 1, g: 0.95294124, b: 0.40000004, a: 0.5}
@@ -913,9 +1076,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -946,21 +1110,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.7
-    edgeOffset: 1
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.7
+    m_EdgeOffset: 1
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: 0
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: 0
     positionOffset: {x: 0, y: 0}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.05
+    m_LocalIntensity: 0.05
     lensFlareTexture: {fileID: 0}
     uniformScale: 1
     sizeXY: {x: 1, y: 1}
     allowMultipleElement: 1
-    count: 11
+    m_Count: 11
     preserveAspectRatio: 0
     rotation: 0
     tint: {r: 1, g: 1, b: 1, a: 0.5}
@@ -1047,9 +1237,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 8
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -1080,21 +1271,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.854
-    edgeOffset: 0.485
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.854
+    m_EdgeOffset: 0.485
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: 0
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: 0
     positionOffset: {x: -0.22, y: -0.69}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.24
+    m_LocalIntensity: 0.24
     lensFlareTexture: {fileID: 0}
     uniformScale: 1
     sizeXY: {x: 0.225, y: 0.5}
     allowMultipleElement: 0
-    count: 5
+    m_Count: 5
     preserveAspectRatio: 0
     rotation: 0
     tint: {r: 1, g: 1, b: 1, a: 0.5}
@@ -1181,9 +1398,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -1214,21 +1432,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.76
-    edgeOffset: 0.8
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.76
+    m_EdgeOffset: 0.8
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: 0.2
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: 0.2
     positionOffset: {x: -0.63, y: 0}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.24
+    m_LocalIntensity: 0.24
     lensFlareTexture: {fileID: 0}
     uniformScale: 0.35
     sizeXY: {x: 1, y: 1}
     allowMultipleElement: 1
-    count: 2
+    m_Count: 2
     preserveAspectRatio: 0
     rotation: 0
     tint: {r: 1, g: 0.52156866, b: 0.03137255, a: 0.5}
@@ -1315,9 +1559,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -1348,21 +1593,47 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.832
-    edgeOffset: 0.819
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.832
+    m_EdgeOffset: 0.819
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
-  - position: 0.2
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - visible: 1
+    position: 0.2
     positionOffset: {x: -0.64, y: -0.3}
     angularOffset: 0
     translationScale: {x: 1, y: 1}
-    localIntensity: 0.24
+    m_LocalIntensity: 0.24
     lensFlareTexture: {fileID: 0}
     uniformScale: 0.35
     sizeXY: {x: 1, y: 1}
     allowMultipleElement: 1
-    count: 2
+    m_Count: 2
     preserveAspectRatio: 0
     rotation: 0
     tint: {r: 1, g: 0.52156866, b: 0.03137255, a: 0.5}
@@ -1449,9 +1720,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    intensityVariation: 0
+    m_IntensityVariation: 0
     positionVariation: {x: 0, y: 0}
     scaleVariation: 0
     rotationVariation: 0
@@ -1482,8 +1754,33 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     distortionRelativeToCenter: 0
-    fallOff: 0.832
-    edgeOffset: 0.819
-    sideCount: 6
-    sdfRoundness: 0
+    m_FallOff: 0.832
+    m_EdgeOffset: 0.819
+    m_SideCount: 6
+    m_SdfRoundness: 0
     inverseSDF: 0
+    uniformAngle: 0
+    uniformAngleCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4

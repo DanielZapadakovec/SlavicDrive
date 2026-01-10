@@ -46,7 +46,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            if (storageUI.HasFreeSlot())
+            if (storageUI.HasFreeSlot() && storageUI.currentStorage.CanAcceptItem(item.itemType))
             {
                 storageUI.AddItem(item.itemType);
                 playerInventory.RemoveItem(item.itemType);
