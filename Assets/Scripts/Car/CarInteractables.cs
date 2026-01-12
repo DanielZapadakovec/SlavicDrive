@@ -94,7 +94,7 @@ public class CarInteractables : MonoBehaviour
     public float fillingSpeed;
     public float defillingSpeed;
     public Image progressBar;
-    public Image progressBarBackground;
+    public GameObject progressBarBackground;
     public AudioSource fuelFilling;
     public FuelPumpHandler fuelPumpHandler;
     public FuelPumpHandler fuelPumpHandler2;
@@ -440,7 +440,7 @@ public class CarInteractables : MonoBehaviour
     #region Fuel
     public void Filling()
     {
-        if (fuelPumpHandler.isHoldingNozzle || fuelPumpHandler2.isHoldingNozzle && playerStatsSystem.currentMoney > 0)
+        if (fuelPumpHandler.isHoldingNozzle || fuelPumpHandler2.isHoldingNozzle && playerStatsSystem.currentMoney > 1)
         {
             if (fuelLevel < 100)
             {
@@ -449,11 +449,19 @@ public class CarInteractables : MonoBehaviour
                     fuelFilling.Play();
                 }
                 fuelLevel += fillingSpeed;
-                playerStatsSystem.SubtractMoney(0.5f);
-                progressBarBackground.gameObject.SetActive(true);
+                progressBarBackground.SetActive(true);
+                playerStatsSystem.SubtractMoney(0.05f);
                 progressBar.fillAmount = fuelLevel / 100;
             }
-            else { fuelLevel = 100; }
+            else 
+            {
+                fuelLevel = 100; 
+                if (fuelFilling.isPlaying)
+                {
+                    fuelFilling.Pause();
+                }
+                playerInteraction.errorMessage.text = "CAN´T REFUEL";
+            }
         }
         else
         {

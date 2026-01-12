@@ -251,6 +251,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e2237e9280216b4988ad94331fe2273, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4525546744386396619}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5e2237e9280216b4988ad94331fe2273, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2963163717177158782}
     - targetCorrespondingSourceObject: {fileID: 5233112405309087440, guid: 5e2237e9280216b4988ad94331fe2273, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1973951996305766334}
@@ -272,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f980e0b4f9d22478886a1df07db27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitPrefab: {fileID: 6933662014861545656, guid: 3720a211ead4e19489bce3745f0f6214, type: 3}
+  fruitPrefab: {fileID: 8714629413629987450, guid: e02a7ffd3a25a6c46ab645706e26324f, type: 3}
   maxFruitCount: 5
   spawnInterval: 60
   fruitSpawnPoints:
@@ -281,6 +284,31 @@ MonoBehaviour:
   - {fileID: 7510647429083213623}
   - {fileID: 7785409340613624618}
   - {fileID: 6558781666481074357}
+--- !u!205 &2963163717177158782
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496837371065952319}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 1
+  m_AnimateCrossFading: 1
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.18642564
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9155155819520305681}
+  - screenRelativeHeight: 0.1434618
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.124074355
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!4 &985952247927419525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e2237e9280216b4988ad94331fe2273, type: 3}
@@ -312,3 +340,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0043814043, y: 0.0032376088, z: 0.010469588}
   m_Center: {x: -0.00010207906, y: -0.000009708405, z: 0.005156486}
+--- !u!23 &9155155819520305681 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8442510506162454399, guid: 5e2237e9280216b4988ad94331fe2273, type: 3}
+  m_PrefabInstance: {fileID: 730840040364266862}
+  m_PrefabAsset: {fileID: 0}

@@ -14,7 +14,7 @@ public class RaceManager : MonoBehaviour
 
     private float raceTime = 0f;
 
-    public List<float> npcTimes; // manuálne nastavíš v inspectore
+    public List<float> npcTimes;
     public string playerResult = "";
 
     public GameObject raceEntryZone;
@@ -129,14 +129,11 @@ public class RaceManager : MonoBehaviour
         if (!disq)
         {
             results.Add(new RaceResult("Player", raceTime));
-            playerStatsSystem.AddMoney(1000);
         }
         else
         {
             results.Add(new RaceResult("Player (DQ)", float.MaxValue));
         }
-
-        // NPC èasy
         for (int i = 0; i < npcTimes.Count; i++)
         {
             results.Add(new RaceResult("NPC " + (i + 1), npcTimes[i]));
@@ -145,9 +142,13 @@ public class RaceManager : MonoBehaviour
         results.Sort((a, b) => a.time.CompareTo(b.time));
 
         string output = "";
+        int playerPlace = -1;
 
         for (int i = 0; i < results.Count; i++)
         {
+            if (results[i].name.StartsWith("Player"))
+                playerPlace = i + 1;
+
             if (results[i].time == float.MaxValue)
             {
                 output += (i + 1) + ". " + results[i].name + " - DISQUALIFIED\n";
@@ -158,9 +159,27 @@ public class RaceManager : MonoBehaviour
             }
         }
 
+        // ===== ODMEÒOVANIE =====
+        if (!disq)
+        {
+            switch (playerPlace)
+            {
+                case 1:
+                    playerStatsSystem.AddMoney(200);
+                    break;
+                case 2:
+                    playerStatsSystem.AddMoney(100);
+                    break;
+                case 3:
+                    playerStatsSystem.AddMoney(50);
+                    break;
+            }
+        }
+
         // posla do UI
         RaceUIManager.Instance.ShowResults(output);
     }
+
 
     string FormatTime(float t)
     {

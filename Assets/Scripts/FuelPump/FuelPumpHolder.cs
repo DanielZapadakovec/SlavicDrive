@@ -10,7 +10,6 @@ public class FuelPumpHandler : MonoBehaviour
     [HideInInspector]public bool isHoldingNozzle = false;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
-    private BoxCollider nozzleCollider;
 
     void Start()
     {
@@ -33,7 +32,7 @@ public class FuelPumpHandler : MonoBehaviour
         {
             isHoldingNozzle = true;
             fuelNozzle.transform.SetParent(playerHand);
-            fuelNozzle.transform.localPosition = Vector3.zero;
+            fuelNozzle.transform.localPosition = playerHand.localPosition;
             fuelNozzle.transform.localRotation = Quaternion.identity;
 
             noozleCollider.SetActive(true);
