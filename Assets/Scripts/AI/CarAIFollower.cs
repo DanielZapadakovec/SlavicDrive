@@ -100,4 +100,10 @@ public class CarAIFollower : MonoBehaviour
     {
         blocked = value;
     }
+
+    public void SetSecondSplineActive(SplineContainer secondSpline)
+    {
+        spline = secondSpline;
+        t = 0f;
+    }
 }

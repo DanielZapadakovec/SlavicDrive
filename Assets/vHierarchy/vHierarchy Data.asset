@@ -61,6 +61,18 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-472236163-0
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1704616383-0
         - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-2138440000-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1633513960-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1849798313-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-2089526894-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1468228702-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-851499640-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1544536178-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-911760298-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-389919808-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-1515135528-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-919132149155446097-1431592403
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-646507871-0
+        - globalObjectIdString: GlobalObjectId_V1-2-ba48f319c70f0834191c77278618d00a-210857523-0
         values:
         - colorIndex: 7
           iconNameOrGuid: PreMatCylinder
@@ -232,6 +244,54 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: BoxCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: AudioSource Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: CapsuleCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: CapsuleCollider Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []
