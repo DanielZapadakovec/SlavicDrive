@@ -254,8 +254,8 @@ MonoBehaviour:
       potentialAlcohol: 0.08
       isFermentable: 1
   - type: 15
-    prefab: {fileID: 6933662014861545656, guid: 3720a211ead4e19489bce3745f0f6214, type: 3}
-    icon: {fileID: 21300000, guid: a60cbc094773feb46810d18ba8236898, type: 3}
+    prefab: {fileID: 8714629413629987450, guid: e329a1157392c854fa31ca73cb2d2c9d, type: 3}
+    icon: {fileID: 21300000, guid: 610621765edbd6a4d8b9f9f7084875fc, type: 3}
     price: 10
     consumableData:
       isFood: 1
@@ -274,11 +274,11 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 81e699c095cc78c4da4f1c758cfd3711, type: 3}
     price: 10
     consumableData:
-      isFood: 0
-      foodAmount: 0
-      isDrink: 0
-      drinkAmount: 0
-      sound: {fileID: 0}
+      isFood: 1
+      foodAmount: -0.1
+      isDrink: 1
+      drinkAmount: -0.1
+      sound: {fileID: 8300000, guid: beb76577d5cdc4140a7cbf4970dc3f09, type: 3}
     ingredientData:
       volume: 1
       sweetness: 0.5
@@ -319,7 +319,7 @@ MonoBehaviour:
       isFermentable: 1
   - type: 19
     prefab: {fileID: 5196499117579488218, guid: 1f899abe03037134282b32fdec0b2e28, type: 3}
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: ba2c6c3347b0a1844af39f022b7a06f8, type: 3}
     price: 10
     consumableData:
       isFood: 0

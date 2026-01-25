@@ -16,7 +16,6 @@ public class FruitTreeController : MonoBehaviour
 
     void Update()
     {
-        // Odstraò null záznamy (ak ovocie bolo znièené inde)
         spawnedFruits.RemoveAll(fruit => fruit == null);
 
         // Spawn kontrola
@@ -34,20 +33,12 @@ public class FruitTreeController : MonoBehaviour
         if (spawnedFruits.Count >= maxFruitCount)
             return;
 
-        if (fruitSpawnPoints.Length == 0)
-        {
-            Debug.LogWarning("[FruitTreeController] No spawn points assigned!");
-            return;
-        }
-
-        // Náhodné miesto
         Transform spawnPoint = fruitSpawnPoints[Random.Range(0, fruitSpawnPoints.Length)];
 
         GameObject newFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
         spawnedFruits.Add(newFruit);
     }
 
-    // Zavolaj toto z ovocia, keï sa znièí po zbere
     public void RemoveFruit(GameObject fruit)
     {
         if (spawnedFruits.Contains(fruit))

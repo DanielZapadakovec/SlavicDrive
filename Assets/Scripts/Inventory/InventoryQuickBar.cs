@@ -237,45 +237,49 @@ public class InventoryQuickBar : MonoBehaviour
 
     public bool TryPickUpItem(ItemID item, Transform dropPoint, Camera cam)
     {
-        int freeSlot = GetFirstFreeSlotIndex();
-
         ItemType newType = item.itemType;
         Sprite icon = ItemDatabase.GetIcon(newType);
         ConsumableData consumable = ItemDatabase.GetConsumableData(newType);
 
-        // =========================
-        // EXISTUJE VOĽNÝ SLOT
-        // =========================
-        if (freeSlot != -1)
+        // 1️⃣ AKTÍVNY SLOT JE PRÁZDNY → DÁME TAM
+        if (slots[activeSlot].itemType == ItemType.None)
         {
-            SetSlot(freeSlot, newType, icon, consumable);
+            SetSlot(activeSlot, newType, icon, consumable);
             Destroy(item.gameObject);
             return true;
         }
 
-        // =========================
-        // INVENTÁR PLNÝ → VYHOĎ AKTÍVNY SLOT
-        // =========================
-        int slotToReplace = activeSlot;
-
-        // vyhoď starý item
-        if (slots[slotToReplace].itemType != ItemType.None)
+        // 2️⃣ HĽADÁME VOĽNÝ SLOT OKREM AKTÍVNEHO
+        for (int i = 0; i < slots.Length; i++)
         {
-            GameObject oldObj = ItemDatabase.SpawnItem(
-                slots[slotToReplace].itemType,
-                dropPoint.position
-            );
+            if (i == activeSlot)
+                continue;
 
-            if (oldObj.TryGetComponent<Rigidbody>(out Rigidbody rb))
-                rb.AddForce(cam.transform.forward * 2f, ForceMode.Impulse);
+            if (slots[i].itemType == ItemType.None)
+            {
+                SetSlot(i, newType, icon, consumable);
+                Destroy(item.gameObject);
+                return true;
+            }
         }
 
-        // nastav nový item do aktívneho slotu
-        SetSlot(slotToReplace, newType, icon, consumable);
+        // 3️⃣ INVENTÁR PLNÝ → VYMEŇ AKTÍVNY SLOT
+        ItemType oldType = slots[activeSlot].itemType;
+
+        GameObject oldObj = ItemDatabase.SpawnItem(
+            oldType,
+            dropPoint.position
+        );
+
+        if (oldObj.TryGetComponent<Rigidbody>(out Rigidbody rb))
+            rb.AddForce(cam.transform.forward * 2f, ForceMode.Impulse);
+
+        SetSlot(activeSlot, newType, icon, consumable);
         Destroy(item.gameObject);
 
         return true;
     }
+
     private int GetFirstFreeSlotIndex()
     {
         for (int i = 0; i < slots.Length; i++)
