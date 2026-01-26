@@ -140,6 +140,8 @@ public class InventoryQuickBar : MonoBehaviour
             Image img = slotParents[i].GetComponent<Image>();
             if (img != null)
                 img.color = (i == activeSlot) ? activeColor : normalColor;
+            slotParents[i].transform.localScale =
+            (i == activeSlot) ? Vector3.one * 1.1f : Vector3.one;
         }
     }
 

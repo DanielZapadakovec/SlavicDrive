@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6627755102020467720}
   - component: {fileID: 7784677278527462028}
   - component: {fileID: -859089504058060664}
+  - component: {fileID: 8194764896237270034}
   m_Layer: 7
   m_Name: TreeApple
   m_TagString: Untagged
@@ -160,3 +161,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 15
+--- !u!205 &8194764896237270034
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8714629413629987450}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.000024840236, y: -0.0002190657, z: -0.0000063795596}
+  m_Size: 0.018780429
+  m_FadeMode: 1
+  m_AnimateCrossFading: 1
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.019489389
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3710176632533080840}
+  - screenRelativeHeight: 0.013228742
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.010102372
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1

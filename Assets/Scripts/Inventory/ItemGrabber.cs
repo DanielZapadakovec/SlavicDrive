@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Camera))]
 public class ItemGrabber : MonoBehaviour
@@ -21,6 +22,11 @@ public class ItemGrabber : MonoBehaviour
     private RaycastHit hit;
     private ItemID outlinedItem;
     public bool canPickUp, canAssembly;
+
+    [Header("Assembly Hold Settings")]
+    public float holdTimeRequired = 2f;
+    private float holdTimer = 0f;
+    private bool isHolding = false;
 
     void Start() => cam = GetComponent<Camera>();
 
@@ -60,35 +66,91 @@ public class ItemGrabber : MonoBehaviour
 
     void HandleAssembly()
     {
-        if (currentCar == null) return;
+        if (currentCar == null)
+            return;
 
         int slotIndex = inventory.activeSlot;
         ItemType heldType = inventory.slots[slotIndex].itemType;
 
+        // RESET, ak nemám item
         if (heldType == ItemType.None)
         {
+            ResetAssembly();
             currentCar.HideAllPreviews();
+           // crosshair.SetMountable(false);
             return;
         }
 
         currentCar.ShowSlotPreview(heldType, true);
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, DetectDistance, CarPartLayer))
+        // RAYCAST
+        if (Physics.Raycast(
+            cam.transform.position,
+            cam.transform.forward,
+            out RaycastHit hit,
+            DetectDistance,
+            CarPartLayer
+        ))
         {
             canAssembly = true;
-            if (Input.GetKeyDown(KeyCode.E))
+            //crosshair.SetMountable(true);
+
+            // DRŽANIE E
+            if (Input.GetKey(KeyCode.E))
             {
-                if (currentCar.TryInstallPart(heldType, hit))
+                isHolding = true;
+                holdTimer += Time.deltaTime;
+
+                uiManager.progressImage.gameObject.SetActive(true);
+                uiManager.progressImage.fillAmount = holdTimer / holdTimeRequired;
+
+                if (holdTimer >= holdTimeRequired)
                 {
-                    inventory.ClearSlot(slotIndex);
-                    canAssembly = false;
+                    CompleteAssembly(heldType, hit, slotIndex);
                 }
+            }
+            else
+            {
+                ResetHold();
             }
         }
         else
         {
-            canAssembly = false;
+            ResetAssembly();
         }
     }
+
+    void ResetHold()
+    {
+        isHolding = false;
+        holdTimer = 0f;
+
+        if (uiManager.progressImage != null)
+            uiManager.progressImage.fillAmount = 0f;
+    }
+
+    void ResetAssembly()
+    {
+        ResetHold();
+        canAssembly = false;
+
+        if (uiManager.progressImage != null)
+            uiManager.progressImage.gameObject.SetActive(false);
+
+       // crosshair.SetMountable(false);
+    }
+    void CompleteAssembly(ItemType heldType, RaycastHit hit, int slotIndex)
+    {
+        if (currentCar.TryInstallPart(heldType, hit))
+        {
+            // 🎞️ FAKE ANIMATION HOOK
+          //  currentCar.AnimateMount(heldType, hit.point);
+
+            inventory.ClearSlot(slotIndex);
+        }
+
+        ResetAssembly();
+    }
+
 
 }

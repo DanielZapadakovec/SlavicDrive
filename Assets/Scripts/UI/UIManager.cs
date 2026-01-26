@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     public PlayerInteraction playerInteraction;
     public Text errorMessage;
 
+    public Image progressImage;
+
     public void Update()
     {
         UpdateUIHints();
