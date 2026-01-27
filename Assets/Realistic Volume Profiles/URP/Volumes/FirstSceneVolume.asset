@@ -730,7 +730,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0
   saturation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -15
 --- !u!114 &-3408837598661955661
 MonoBehaviour:
@@ -1336,7 +1336,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.2
   response:
     m_OverrideState: 0
     m_Value: 0.8
