@@ -15,6 +15,10 @@ public class BusTimelineMethods : MonoBehaviour
     public GameObject Canvas;
 
     public AudioMixer mixer;
+    public void Start()
+    {
+        Player.gameObject.SetActive(false);
+    }
 
     public void SetLowpass(float value)
     {

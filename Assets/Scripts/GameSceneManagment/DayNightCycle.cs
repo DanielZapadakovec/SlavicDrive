@@ -19,9 +19,12 @@ public class DayNightCycle : MonoBehaviour
     [Header("Time Settings")]
     [Tooltip("Ako rýchlo plynie èas. 60 = 1 minúta za sekundu")]
     public float timeMultiplier = 30f;
+    private int lastHour;
 
     [Tooltip("Poèiatoèný èas v hre")]
     public int startHour = 8;
+
+    public event Action<int> OnHourChanged;
 
     [Tooltip("Poèiatoèný deò v týždni")]
     public WeekDay startDay = WeekDay.Monday;
@@ -43,12 +46,28 @@ public class DayNightCycle : MonoBehaviour
     public Text timeDisplay;
     private DateTime previousTime;
 
+    [Header("Fog Settings")]
+    public bool enableFog = true;
+    [Tooltip("Fog end distance cez deò")]
+    public float fogEndDay = 300f;
+    [Tooltip("Fog end distance v noci")]
+    public float fogEndNight = 80f;
+    [Tooltip("Fog farba cez deò")]
+    public Color fogDayColor = Color.gray;
+    [Tooltip("Fog farba v noci")]
+    public Color fogNightColor = Color.black;
+
 
     private void Start()
     {
         currentTime = DateTime.Today.AddHours(startHour);
         previousTime = currentTime;
         currentDayIndex = (int)startDay;
+        if (enableFog)
+        {
+            RenderSettings.fog = true;
+            RenderSettings.fogMode = FogMode.Linear;
+        }
     }
 
     private void Update()
@@ -56,16 +75,23 @@ public class DayNightCycle : MonoBehaviour
         UpdateTime();
         RotateSun();
         UpdateLighting();
+        UpdateFog();
         UpdateTimeText();
 
         previousTime = currentTime;
 
         currentTime = currentTime.AddSeconds(Time.deltaTime * timeMultiplier);
+        lastHour = currentTime.Hour;
 
         // Detect crossing midnight
         if (previousTime.Day != currentTime.Day)
         {
             AdvanceDay();
+        }
+        if (currentTime.Hour != lastHour)
+        {
+            lastHour = currentTime.Hour;
+            OnHourChanged?.Invoke(lastHour);
         }
     }
 
@@ -145,5 +171,30 @@ public class DayNightCycle : MonoBehaviour
     {
         return currentTime;
     }
+
+    private void UpdateFog()
+    {
+        if (!enableFog) return;
+
+        float timePercent = (float)(currentTime.TimeOfDay.TotalHours / 24f);
+
+        // 0 = noc, 0.5 = poludnie, 1 = noc
+        float dayFactor = Mathf.Clamp01(
+            lightIntensityCurve.Evaluate(timePercent)
+        );
+
+        RenderSettings.fogEndDistance = Mathf.Lerp(
+            fogEndNight,
+            fogEndDay,
+            dayFactor
+        );
+
+        RenderSettings.fogColor = Color.Lerp(
+            fogNightColor,
+            fogDayColor,
+            dayFactor
+        );
+    }
+
 
 }

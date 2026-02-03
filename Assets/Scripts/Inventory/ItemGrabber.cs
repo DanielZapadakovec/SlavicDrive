@@ -27,6 +27,8 @@ public class ItemGrabber : MonoBehaviour
     public float holdTimeRequired = 2f;
     private float holdTimer = 0f;
     private bool isHolding = false;
+    public AudioSource propsAudioSource;
+    public AudioClip assemblingAudioClip;
 
     void Start() => cam = GetComponent<Camera>();
 
@@ -103,6 +105,10 @@ public class ItemGrabber : MonoBehaviour
 
                 uiManager.progressImage.gameObject.SetActive(true);
                 uiManager.progressImage.fillAmount = holdTimer / holdTimeRequired;
+                if (!propsAudioSource.isPlaying)
+                {
+                    propsAudioSource.PlayOneShot(assemblingAudioClip);
+                }
 
                 if (holdTimer >= holdTimeRequired)
                 {
@@ -127,6 +133,7 @@ public class ItemGrabber : MonoBehaviour
 
         if (uiManager.progressImage != null)
             uiManager.progressImage.fillAmount = 0f;
+        propsAudioSource.Stop();
     }
 
     void ResetAssembly()

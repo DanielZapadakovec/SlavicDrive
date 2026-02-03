@@ -35,6 +35,13 @@ public class InventoryQuickBar : MonoBehaviour
     public Color activeColor = Color.white;
     public UIManager uiManager;
 
+    [Header("Consume Hold Settings")]
+    public float consumeHoldTime = 1f;
+    public Image consumeProgressImage;
+
+    private float consumeTimer = 0f;
+    private bool isConsuming = false;
+
     [Header("Audio")]
     public AudioSource audioProps;
 
@@ -72,23 +79,23 @@ public class InventoryQuickBar : MonoBehaviour
         UpdateUIHighlight();
         UpdateHeldItem();
     }
-
-    private void Update()
+    private void FixedUpdate()
     {
         HandleKeyboardFallback();
         CheckIfItemStillExists();
-        if (canConsume) { ConsumeActiveItem(); }
+    }
 
-        if (Gamepad.current != null)
+    private void Update()
+    {
+        if (canConsume)
         {
-            if (Gamepad.current.rightShoulder.wasPressedThisFrame)
-                Debug.Log("RB pressed");
-
-            if (Gamepad.current.leftShoulder.wasPressedThisFrame)
-                Debug.Log("LB pressed");
+            ConsumeActiveItem();
         }
-    
-}
+        else
+        {
+            ResetConsume();
+        }
+    }
 
     #endregion
 
@@ -218,9 +225,7 @@ public class InventoryQuickBar : MonoBehaviour
         {
             if (slotParents[i].childCount == 0)
             {
-                slots[i].itemType = ItemType.None;
-                slots[i].consumableData = null;
-                slots[i].itemPrefabInstance = null;
+                ClearSlot(i);
             }
             else
             {
@@ -243,7 +248,6 @@ public class InventoryQuickBar : MonoBehaviour
         Sprite icon = ItemDatabase.GetIcon(newType);
         ConsumableData consumable = ItemDatabase.GetConsumableData(newType);
 
-        // 1️⃣ AKTÍVNY SLOT JE PRÁZDNY → DÁME TAM
         if (slots[activeSlot].itemType == ItemType.None)
         {
             SetSlot(activeSlot, newType, icon, consumable);
@@ -251,7 +255,6 @@ public class InventoryQuickBar : MonoBehaviour
             return true;
         }
 
-        // 2️⃣ HĽADÁME VOĽNÝ SLOT OKREM AKTÍVNEHO
         for (int i = 0; i < slots.Length; i++)
         {
             if (i == activeSlot)
@@ -265,7 +268,6 @@ public class InventoryQuickBar : MonoBehaviour
             }
         }
 
-        // 3️⃣ INVENTÁR PLNÝ → VYMEŇ AKTÍVNY SLOT
         ItemType oldType = slots[activeSlot].itemType;
 
         GameObject oldObj = ItemDatabase.SpawnItem(
@@ -282,15 +284,6 @@ public class InventoryQuickBar : MonoBehaviour
         return true;
     }
 
-    private int GetFirstFreeSlotIndex()
-    {
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (slots[i].itemType == ItemType.None)
-                return i;
-        }
-        return -1;
-    }
 
     public void DropActiveItem(Transform dropPoint, Camera cam)
     {
@@ -311,13 +304,20 @@ public class InventoryQuickBar : MonoBehaviour
 
     private void ConsumeActiveItem()
     {
+
         InventorySlot slot = slots[activeSlot];
         if (slot.consumableData == null)
+        {
+            ResetConsume();
             return;
+        }
 
         ConsumableData data = slot.consumableData;
         if (!data.isFood && !data.isDrink)
+        {
+            ResetConsume();
             return;
+        }
 
         PlayerStatsSystem stats = FindAnyObjectByType<PlayerStatsSystem>();
         if (stats == null)
@@ -325,20 +325,49 @@ public class InventoryQuickBar : MonoBehaviour
 
         uiManager.ShowEKeyBind(true);
 
-        if (consumeAction.action.WasPressedThisFrame())
+        if (consumeAction.action.IsPressed())
         {
-            if (data.isFood)
-                stats.AddHunger(data.foodAmount);
+            isConsuming = true;
+            consumeTimer += Time.deltaTime;
+            consumeProgressImage.gameObject.SetActive(true);
 
-            if (data.isDrink)
-                stats.AddThirst(data.drinkAmount);
+            float progress = consumeTimer / consumeHoldTime;
+            consumeProgressImage.sprite = ItemDatabase.GetIcon(slot.itemType);
+            consumeProgressImage.fillAmount = progress;
 
-            if (data.sound != null && audioProps != null && !audioProps.isPlaying)
-                audioProps.PlayOneShot(data.sound);
-
-            ClearSlot(activeSlot);
+            if (consumeTimer >= consumeHoldTime)
+            {
+                ApplyConsume(data, stats);
+                ResetConsume();
+                ClearSlot(activeSlot);
+            }
+        }
+        else
+        {
+            ResetConsume();
         }
     }
+    private void ApplyConsume(ConsumableData data, PlayerStatsSystem stats)
+    {
+        if (data.isFood)
+            stats.AddHunger(data.foodAmount);
+
+        if (data.isDrink)
+            stats.AddThirst(data.drinkAmount);
+
+        if (data.sound != null && audioProps != null)
+            audioProps.PlayOneShot(data.sound);
+    }
+    private void ResetConsume()
+    {
+        isConsuming = false;
+        consumeTimer = 0f;
+
+        if (consumeProgressImage != null)
+            consumeProgressImage.fillAmount = 0f;
+        consumeProgressImage.gameObject.SetActive(false);
+    }
+
 
     #endregion
 
