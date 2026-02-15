@@ -5,6 +5,10 @@ public class TabManager : MonoBehaviour
     public TabButton[] tabs;
     public AudioSource municipalUISource;
     public AudioClip buttonClick;
+    public void Start()
+    {
+        OpenTab(0);
+    }
     public void OpenTab(int index)
     {
         if (!municipalUISource.isPlaying)

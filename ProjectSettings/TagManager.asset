@@ -10,6 +10,9 @@ TagManager:
   - Asphalt
   - Car
   - IconsCreationCamera
+  - BottleCrate
+  - PressingPoint
+  - HeaterMachine
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - Car
   - Ground
   - PlayerCar
-  - 
+  - OuterLayerOfCar
   - 
   - 
   - 

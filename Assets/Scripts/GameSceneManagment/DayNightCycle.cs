@@ -7,13 +7,13 @@ public class DayNightCycle : MonoBehaviour
 {
     public enum WeekDay
     {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
+        Pondelok,
+        Utorok,
+        Streda,
+        Štvrtok,
+        Piatok,
+        Sobota,
+        Nede¾a
     }
 
     [Header("Time Settings")]
@@ -27,7 +27,7 @@ public class DayNightCycle : MonoBehaviour
     public event Action<int> OnHourChanged;
 
     [Tooltip("Poèiatoèný deò v týždni")]
-    public WeekDay startDay = WeekDay.Monday;
+    public WeekDay startDay = WeekDay.Streda;
 
     private DateTime currentTime;
     private int currentDayIndex;

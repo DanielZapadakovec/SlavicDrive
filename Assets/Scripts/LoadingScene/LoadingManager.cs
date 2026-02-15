@@ -34,9 +34,8 @@ public class LoadingManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        // Full bar
         progressBar.value = 1f;
-        loadingText.text = "Finalizing Loading...";
+        loadingText.text = "Naèítavam...";
 
         yield return new WaitForSeconds(1f);
         operation.allowSceneActivation = true;

@@ -12,7 +12,8 @@ public class UpgradeApplier : MonoBehaviour
     [Header("CarMaterialChange")]
     public GameObject car;
     public Material newBodyPaintMaterial;
-
+    [Header("UnlockLocalShop")]
+    public GameObject localShopUpgradeables;
     private void Awake()
     {
         if (Instance == null)
@@ -29,15 +30,14 @@ public class UpgradeApplier : MonoBehaviour
                 ApplyStorageUpgrade(data);
                 break;
 
-            case UpgradeType.UnlockLand:
-                ApplyUnlockLand(data);
-                break;
-
             case UpgradeType.ChangeMaterialRoad:
                 ApplyMaterialChangeRoad(data);
                 break;
             case UpgradeType.ChangeMaterialCar:
                 ApplyMaterialChangeCar(data);
+                break;
+            case UpgradeType.UnlockLocalShop:
+                UnlockLand(data);
                 break;
         }
     }
@@ -72,6 +72,10 @@ public class UpgradeApplier : MonoBehaviour
         var renderer = car.GetComponent<Renderer>();
         if (renderer != null && newBodyPaintMaterial != null)
             renderer.material = newBodyPaintMaterial;
+    }
+    void UnlockLand(UpgradeData data)
+    {
+        localShopUpgradeables.SetActive(true);
     }
 
 
