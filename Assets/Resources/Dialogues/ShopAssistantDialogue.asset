@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48af4535d9ee214aaacd887fbd8bde0, type: 3}
+  m_Name: ShopAssistantDialogue
+  m_EditorClassIdentifier: 
+  playOnlyOnce: 0
+  hasPlayed: 0
+  lines:
+  - text: "Obchodn\xEDk: Vitaj mlad\xFD, nak\xFAp \u010Do potrebuje\u0161, \xE1\xE1nou."
+    voice: {fileID: 0}
+    secondsPerCharacter: 0.1
+    waitForContinue: 0
+    extraHoldTime: 2

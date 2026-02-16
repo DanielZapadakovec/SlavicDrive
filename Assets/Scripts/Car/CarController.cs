@@ -380,7 +380,7 @@ public class CarController : MonoBehaviour
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
 
         float rotationZ = Mathf.Lerp(minZRotation, maxZRotation, currentSpeed / maxSpeed);
-        SpeedometerNeedle.localRotation = Quaternion.Euler(0, 0, rotationZ);
+        SpeedometerNeedle.localRotation = Quaternion.Euler(SpeedometerNeedle.localRotation.x, SpeedometerNeedle.localRotation.y, rotationZ);
     }
 
     private void UpdateRPMmeter()
@@ -388,7 +388,7 @@ public class CarController : MonoBehaviour
         if (carRigidbody == null || RPMNeedle == null) return;
 
         float rotationZ = Mathf.Lerp(minZRotationRPM, maxZRotationRPM, engineRPM / maxEngineRPM);
-        RPMNeedle.localRotation = Quaternion.Euler(0, 0, rotationZ);
+        RPMNeedle.localRotation = Quaternion.Euler(RPMNeedle.localRotation.x, RPMNeedle.localRotation.y, rotationZ);
     }
 
     private void UpdateFuelMeter()

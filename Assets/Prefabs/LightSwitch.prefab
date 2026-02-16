@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8234939559969280450}
   - component: {fileID: 6332218595512580447}
   m_Layer: 0
-  m_Name: UBS_Lightswitch_Housing001
+  m_Name: LightSwitch
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

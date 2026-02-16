@@ -12,7 +12,9 @@ public class BusTimelineMethods : MonoBehaviour
     public GameObject Player;
     public Volume volume;
     public VolumeProfile normalProfile;
-    public GameObject Canvas;
+    public GameObject MainCanvas;
+    public GameObject secondCanvas;
+
 
     public AudioMixer mixer;
     public void Start()
@@ -61,6 +63,7 @@ public class BusTimelineMethods : MonoBehaviour
     {
         Player.SetActive(true);
         volume.profile = normalProfile;
-        Canvas.SetActive(true);
+        MainCanvas.SetActive(true);
+        secondCanvas.SetActive(false);
     }
 }

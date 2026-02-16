@@ -24,7 +24,7 @@ public class LoadingManager : MonoBehaviour
 
     IEnumerator LoadGameAsync()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync("GameScene 1");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("GameScene");
         operation.allowSceneActivation = false;
 
         while (operation.progress < 0.9f)
