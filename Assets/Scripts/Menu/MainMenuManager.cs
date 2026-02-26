@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
 {
     #region [Properties] StartButton
     public PlayableDirector startDirector;
+    public DialogueAsset[] onlyOnceDialogues;
     #endregion
     #region [Properties] SettingsButton
     public GameObject SettingsPanel;
@@ -24,7 +25,15 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
+        NewGameReload();
         SceneManager.LoadScene("LoadingScene");
+    }
+    public void NewGameReload()
+    {
+        foreach (var dialogue in onlyOnceDialogues)
+        {
+            dialogue.hasPlayed = false;
+        }
     }
     #endregion
     #region [Methods] SettingsButton

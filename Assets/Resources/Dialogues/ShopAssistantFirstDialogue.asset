@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: ShopAssistantFirstDialogue
   m_EditorClassIdentifier: 
   playOnlyOnce: 1
-  hasPlayed: 0
+  hasPlayed: 1
   lines:
   - text: "Obchodn\xEDk: Vitaj mlad\xFD, nak\xFAp \u010Do potrebuje\u0161, \xE1\xE1nou."
     voice: {fileID: 8300000, guid: d07d75e7a3e23f943a0af2ef975a3edd, type: 3}
     secondsPerCharacter: 0.1
     waitForContinue: 0
     extraHoldTime: 2
-  - text: "Zd\xE1\u0161 sa mi nejak povedom\xFD..., star\xFD ho\xE1r mal tie\u017E
+  - text: "Zd\xE1\u0161 sa mi nejak povedom\xFD..., star\xFD hor\xE1r mal tie\u017E
       tak\xFA divn\xFA tv\xE1r ako ty."
     voice: {fileID: 8300000, guid: 69b689b2548da0349b9377b67431fe26, type: 3}
     secondsPerCharacter: 0.1
