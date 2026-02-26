@@ -4,17 +4,31 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
+    public GameObject settingsUI;
     public MonoBehaviour[] scriptsToDisable;
     private bool isPaused = false;
+    public GameObject playerAudioSource;
+    public GameObject buttons;
+    bool settingsOpen;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !StorageInventory.isOpen )
         {
             if (isPaused)
-                Resume();
+            {
+                if (settingsOpen)
+                {
+                    Settings();
+                    
+                }
+                else
+                    Resume();
+            }
             else
+            {
                 Pause();
+            }
         }
     }
 
@@ -24,8 +38,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SetScriptsEnabled(true);
         isPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        settingsUI.SetActive(false);
+        PlayerController.SwitchingCameraMovement();
+        playerAudioSource.SetActive(true);
+        buttons.SetActive(false);
     }
 
     public void Pause()
@@ -35,8 +51,24 @@ public class PauseMenu : MonoBehaviour
         pauseUI.GetComponent<Animator>().Play("PauseMenuFade");
         SetScriptsEnabled(false);
         isPaused = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        PlayerController.SwitchingCameraMovement();
+        playerAudioSource.SetActive(false);
+        buttons.SetActive(true);
+    }
+    public void Settings()
+    {
+        if (!settingsOpen)
+        {
+            buttons.SetActive(false);
+            settingsOpen = true;
+            settingsUI.SetActive(true);
+        }
+        else if (settingsOpen)
+        {
+            buttons.SetActive(true);
+            settingsOpen = false;
+            settingsUI.SetActive(false);
+        }
     }
 
     private void SetScriptsEnabled(bool enabled)

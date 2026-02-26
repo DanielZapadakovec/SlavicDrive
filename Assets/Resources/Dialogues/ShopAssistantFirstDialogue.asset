@@ -49,3 +49,8 @@ MonoBehaviour:
     secondsPerCharacter: 0.1
     waitForContinue: 0
     extraHoldTime: 0
+  - text: 
+    voice: {fileID: 0}
+    secondsPerCharacter: 0.1
+    waitForContinue: 0
+    extraHoldTime: 0

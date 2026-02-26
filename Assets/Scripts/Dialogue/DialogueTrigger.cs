@@ -17,7 +17,7 @@ public class DialogueTrigger : MonoBehaviour
         }
         else if (other.CompareTag(("Player")) && firstDialogue.hasPlayed)
         {
-            dialoguePlayer.Play(firstDialogue);
+            dialoguePlayer.Play(loopDialogue);
             Debug.Log("Trigger: Player a dialog2");
         }
     }

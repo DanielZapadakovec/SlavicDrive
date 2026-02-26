@@ -112,6 +112,10 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: bef2b1694e24b6441b1494ed0073d0fa
     name: MasterVolume
+  - guid: 9aa70cadeb751de479a6d6edddc8e0dd
+    name: MusicVolume
+  - guid: 8a2b05cc586b837429ab586788c29670
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - a408dbe959fa15244a0e1a8a811764bc
@@ -141,7 +145,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 7
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - ba48f319c70f0834191c77278618d00a
+    - 674deb500232c034f8f62acc5d63990c
     values:
     - goDatas_byGlobalId:
         keys:
@@ -292,6 +293,44 @@ MonoBehaviour:
           isColorRecursive: 0
         - colorIndex: 0
           iconNameOrGuid: Camera Icon
+          isIconRecursive: 0
+          isColorRecursive: 0
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-425648893186333063-0
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-1779113684268123791-0
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-5739676202505022895-0
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-8550767394030422944-0
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-6680702506641506135-0
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-7166843742199669000-0
+        - globalObjectIdString: GlobalObjectId_V1-1-674deb500232c034f8f62acc5d63990c-234996952610026382-0
+        values:
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 3
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
+          isIconRecursive: 0
+          isColorRecursive: 0
+        - colorIndex: 2
+          iconNameOrGuid: 
           isIconRecursive: 0
           isColorRecursive: 0
   bookmarks: []

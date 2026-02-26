@@ -28,7 +28,7 @@ using UnityEngine;
     [Space(20)]
         [Header("Audio")]
         [SerializeField] float TransitionVolume = 4f;
-        [SerializeField] AudioSource Audio;
+        [SerializeField] public AudioSource Audio;
         [SerializeField] AudioClip WalkingAudio;
         [SerializeField] AudioClip RunningAudio;
         [SerializeField] AudioClip CroughWalkAudio;
@@ -238,7 +238,7 @@ using UnityEngine;
             canMoveCamera = false;
             canMove = false;
             Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            Cursor.visible = true; 
         }
     }
 }
