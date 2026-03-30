@@ -24,19 +24,36 @@ public class BusTimelineMethods : MonoBehaviour
 
     public void SetLowpass(float value)
     {
+        StartCoroutine(AnimateLowpass(5,value));
+    }
+    public void SetHighPass(float value)
+    {
         // value 0–1 → Hz
-        float cutoff = Mathf.Lerp(22000f, 800f, value);
-        mixer.SetFloat("Bus_Lowpass", cutoff);
+        float cutoff = Mathf.Lerp(800f, 2500f, value);
+        mixer.SetFloat("Bus_Highpass", cutoff);
     }
 
-    public void SetDistortion(float value)
+    public IEnumerator AnimateLowpass(float targetValue, float duration)
     {
-        mixer.SetFloat("Bus_Distortion", Mathf.Lerp(0f, 0.7f, value));
-    }
+        float startValue;
+        mixer.GetFloat("Bus_Lowpass", out startValue);
 
-    public void SetReverb(float value)
-    {
-        mixer.SetFloat("Bus_Reverb", Mathf.Lerp(-10000f, 0f, value));
+        float startTime = 0f;
+
+        float targetCutoff = Mathf.Lerp(22000f, 3500f, targetValue);
+
+        while (startTime < duration)
+        {
+            startTime += Time.deltaTime;
+            float t = startTime / duration;
+
+            float current = Mathf.Lerp(startValue, targetCutoff, t);
+            mixer.SetFloat("Bus_Lowpass", current);
+
+            yield return null;
+        }
+
+        mixer.SetFloat("Bus_Lowpass", targetCutoff);
     }
 
     public void SetSpatial(float target)

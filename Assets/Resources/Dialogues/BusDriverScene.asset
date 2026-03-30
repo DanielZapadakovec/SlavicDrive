@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BusDriverScene
   m_EditorClassIdentifier: 
   playOnlyOnce: 1
-  hasPlayed: 1
+  hasPlayed: 0
   lines:
   - text: "V\xE1\u017Een\xFD, vystupujeme. Kone\u010Dn\xE1 ! Kone\u010Dn\xE1 zast\xE1vo\u010Dka,
       hal\xF3\xF3."

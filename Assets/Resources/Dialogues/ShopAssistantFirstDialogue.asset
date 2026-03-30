@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShopAssistantFirstDialogue
   m_EditorClassIdentifier: 
   playOnlyOnce: 1
-  hasPlayed: 1
+  hasPlayed: 0
   lines:
   - text: "Obchodn\xEDk: Vitaj mlad\xFD, nak\xFAp \u010Do potrebuje\u0161, \xE1\xE1nou."
     voice: {fileID: 8300000, guid: d07d75e7a3e23f943a0af2ef975a3edd, type: 3}

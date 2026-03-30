@@ -80,6 +80,8 @@ using UnityEngine;
             RunningValue = RuningSpeed;
             WalkingValue = walkingSpeed;
         characterController.detectCollisions = false;
+        canMoveCamera = true;
+        canMove = true;
     }
 
         void Update()

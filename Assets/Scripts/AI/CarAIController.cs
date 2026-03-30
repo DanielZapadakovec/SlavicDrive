@@ -179,33 +179,38 @@ public class CarAIController : MonoBehaviour
         currentGear = newGear;
         isShifting = false;
     }
-
+    
     // ================= WHEELS =================
 
     private void Update()
     {
-        UpdateWheel(frontLeft, frontLeftMesh, false);
-        UpdateWheel(frontRight, frontRightMesh, true);
-        UpdateWheel(rearLeft, rearLeftMesh, false);
-        UpdateWheel(rearRight, rearRightMesh, true);
+        UpdateLeftWheel(frontLeft, frontLeftMesh);
+        UpdateRightWheel(frontRight, frontRightMesh);
+        UpdateLeftWheel(rearLeft, rearLeftMesh);
+        UpdateRightWheel(rearRight, rearRightMesh);
     }
 
-    private void UpdateWheel(WheelCollider col, Transform mesh, bool invertRotation)
+    private void UpdateLeftWheel(WheelCollider col, Transform mesh)
     {
         col.GetWorldPose(out Vector3 pos, out Quaternion rot);
 
-        if (invertRotation)
-            rot *= Quaternion.Euler(0f, 180f, 0f);
+        mesh.position = pos;
+        mesh.rotation = rot *= Quaternion.Euler(0f, -90f, 0f);
+    }
+    private void UpdateRightWheel(WheelCollider col, Transform mesh)
+    {
+        col.GetWorldPose(out Vector3 pos, out Quaternion rot);
+
 
         mesh.position = pos;
-        mesh.rotation = rot;
+        mesh.rotation = rot *= Quaternion.Euler(0f, 90f, 0f);
     }
+
 
     private void HandleMotor()
     {
         if (isBraking)
         {
-            // pri brzdenÌ netlaËÌme motor
             rearLeft.motorTorque = 0f;
             rearRight.motorTorque = 0f;
             return;
@@ -213,10 +218,8 @@ public class CarAIController : MonoBehaviour
 
         float speed = rb.velocity.magnitude * 3.6f;
 
-        // jemnejöÌ rozjazd (autobus nem· okamûit˝ z·ùah)
         float throttleCurve = Mathf.Lerp(0.3f, 1f, smoothedThrottle);
 
-        // umelÈ obmedzenie v˝konu pri vyööÌch r˝chlostiach
         float speedLimiter = 1f;
         if (currentGear < gearSpeedLimits.Length)
         {
