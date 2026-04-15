@@ -23,6 +23,7 @@ public class AutoSeller : MonoBehaviour
     public List<ItemSellData> sellableItems = new List<ItemSellData>();
 
     private float hourTimer = 0f;
+
     private void Start()
     {
         if (dayNight == null)

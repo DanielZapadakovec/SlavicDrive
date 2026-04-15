@@ -75476,6 +75476,7 @@ Transform:
   - {fileID: 2114234194}
   - {fileID: 767473459}
   - {fileID: 692420028}
+  - {fileID: 309990540}
   - {fileID: 1177846296}
   - {fileID: 2058110309}
   - {fileID: 1953034397}
@@ -78186,6 +78187,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5801403814974504243, guid: e0117aba0b9ecba45a06bde23d831e0e, type: 3}
+--- !u!1 &309990539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309990540}
+  m_Layer: 0
+  m_Name: HouseTeleportPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309990540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309990539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.8191521, z: 0, w: 0.57357645}
+  m_LocalPosition: {x: -620.46, y: -927.86, z: -56.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 261740312}
+  m_LocalEulerAnglesHint: {x: 0, y: -110, z: 0}
 --- !u!1001 &310712950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372246,8 +372278,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Hr\xE1\u010D potrebuje ma\u0165 dostatok jedla, pitia a energie, aby mohol
-    vykon\xE1va\u0165 \u010Dinnosti. Tieto hodnoty sa postupne zni\u017Euj\xFA, preto
-    je d\xF4le\u017Eit\xE9 ich dop\u013A\u0148a\u0165. Jedlo a n\xE1poje si m\xF4\u017Ee\u0161
+    vykon\xE1va\u0165 \u010Dinnosti. Tieto potreby sa postupne zvy\u0161uj\xFA, preto
+    je d\xF4le\u017Eit\xE9 konzumova\u0165. Jedlo a n\xE1poje si m\xF4\u017Ee\u0161
     k\xFApi\u0165 u obchodn\xEDka a pou\u017Ei\u0165 ich pod\u013Ea potreby."
 --- !u!222 &881644362
 CanvasRenderer:
@@ -380853,6 +380885,72 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &967750876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2668072362099878561, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+  m_PrefabInstance: {fileID: 1339952135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &967750882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967750876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.7148847, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &967750883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967750876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e651236eb4433438ef63417fa9a59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Domov
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1339952138}
+        m_TargetAssemblyTypeName: TeleportHome, Assembly-CSharp
+        m_MethodName: Teleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1891809619630428269}
+        m_TargetAssemblyTypeName: PlayerStatsSystem, Assembly-CSharp
+        m_MethodName: AddMoney
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clickSound: {fileID: 0}
+  canHold: 0
+  isHolding: 0
 --- !u!1 &967874138
 GameObject:
   m_ObjectHideFlags: 0
@@ -382000,6 +382098,10 @@ PrefabInstance:
       propertyPath: fuelPumpHandler
       value: 
       objectReference: {fileID: 1892783196}
+    - target: {fileID: 8857028587414607728, guid: ffb3055bab609ac4192124d9a4fb3270, type: 3}
+      propertyPath: waypointManager
+      value: 
+      objectReference: {fileID: 147282479}
     - target: {fileID: 8857028587414607728, guid: ffb3055bab609ac4192124d9a4fb3270, type: 3}
       propertyPath: fuelPumpHandler2
       value: 
@@ -436193,12 +436295,20 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2668072362099878561, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668072362099878561, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3638911070570068518, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
       propertyPath: m_Name
       value: Simple Retro Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638911070570068518, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 3638911070570068518, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -436274,6 +436384,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3638911070570068518, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1339952138}
+    - targetCorrespondingSourceObject: {fileID: 2668072362099878561, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 967750883}
+    - targetCorrespondingSourceObject: {fileID: 2668072362099878561, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 967750882}
   m_SourcePrefab: {fileID: 100100000, guid: 0830086465bbffd4ab64ee6fc8c82d74, type: 3}
 --- !u!4 &1339952136 stripped
 Transform:
@@ -436308,6 +436424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52723d521143a74dab9320b7a5bbf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 402489419}
+  houseTransform: {fileID: 309990540}
 --- !u!1 &1340466559
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class TeleportHome : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Player;
+    public Transform houseTransform;
 
-    // Update is called once per frame
-    void Update()
+    public void Teleport()
     {
-        
+        Player.transform.position = houseTransform.position;
+        Player.transform.rotation = houseTransform.rotation;
     }
 }

@@ -76,17 +76,17 @@ public class AchievementSystem : MonoBehaviour
 
     public void Update()
     {
-        if (carAssembly.IsPartInstalled(ItemType.SteeringWheel) && wheel)
+        if (carAssembly.IsPartInstalled(ItemType.SteeringWheel) && !wheel)
         {
             ShowAchievement(1);
             wheel = true;
         }
-        else if (carAssembly.IsPartInstalled(ItemType.Seat) && seat)
+        else if (carAssembly.IsPartInstalled(ItemType.Seat) && !seat)
         {
             ShowAchievement(2);
             seat = true;
         }
-        else if (carAssembly.IsPartInstalled(ItemType.Battery) && battery)
+        else if (carAssembly.IsPartInstalled(ItemType.Battery) && !battery)
         {
             ShowAchievement(3);
             battery = true;
