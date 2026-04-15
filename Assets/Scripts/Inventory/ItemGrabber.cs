@@ -9,10 +9,9 @@ public class ItemGrabber : MonoBehaviour
     [SerializeField] float DetectDistance = 5f;
     [SerializeField] Transform dropPoint;
     [SerializeField] InventoryQuickBar inventory;
-
     [Header("UI")]
     public UIManager uiManager;
-    public CrosshairNormal cross;
+    public CrosshairSystem cross;
 
     [Header("Car Assembly")]
     public CarAssembly currentCar;
@@ -49,6 +48,7 @@ public class ItemGrabber : MonoBehaviour
                     if (outlinedItem != null) outlinedItem.DisableOutline();
                     outlinedItem = item;
                     outlinedItem.EnableOutline();
+                    cross.SetCrosshair(CrosshairSystem.CrosshairType.Grabbable);
                 }
                 canPickUp = true;
 
@@ -61,6 +61,7 @@ public class ItemGrabber : MonoBehaviour
         if (outlinedItem != null) outlinedItem.DisableOutline();
         outlinedItem = null;
         canPickUp = false;
+        cross.SetCrosshair(CrosshairSystem.CrosshairType.Base);
 
         if (Input.GetKeyDown(KeyCode.F))
             inventory.DropActiveItem(dropPoint, cam);
@@ -85,19 +86,13 @@ public class ItemGrabber : MonoBehaviour
 
         currentCar.ShowSlotPreview(heldType, true);
 
-        // RAYCAST
-        if (Physics.Raycast(
-            cam.transform.position,
-            cam.transform.forward,
-            out RaycastHit hit,
-            DetectDistance,
-            CarPartLayer
-        ))
+
+        if (Physics.Raycast(cam.transform.position,cam.transform.forward,out RaycastHit hit,DetectDistance,CarPartLayer))
         {
             canAssembly = true;
+            cross.SetCrosshair(CrosshairSystem.CrosshairType.Special);
             //crosshair.SetMountable(true);
 
-            // DRŽANIE E
             if (Input.GetKey(KeyCode.E))
             {
                 isHolding = true;
@@ -123,6 +118,7 @@ public class ItemGrabber : MonoBehaviour
         else
         {
             ResetAssembly();
+            cross.SetCrosshair(CrosshairSystem.CrosshairType.Base);
         }
     }
 

@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using WrightAngle.Waypoint;
 
 [System.Serializable]
 public class CarInteractables : MonoBehaviour
@@ -46,6 +47,7 @@ public class CarInteractables : MonoBehaviour
     [SerializeField] private GameObject Car;
     [SerializeField] private Transform PlayerCameraPosition;
     [SerializeField] private Transform exitPoint;
+    [SerializeField] public WrightAngle.Waypoint.WaypointUIManager waypointManager;
 
 
     public bool isSeated = false;
@@ -138,12 +140,13 @@ public class CarInteractables : MonoBehaviour
     #region DoorInteract
     public void DoorInteract()
     {
-        if(!isOpen && !isHoodUnLocked)
+        if(!isOpen)
         {
             doorAnimator.SetBool(openbool, true);
             isOpen = true;
             doorAudio.clip = doorAudioOpen;
             doorAudio.Play();
+            playerInteraction.DisableCurrentInteractable();
         }
         else
         {
@@ -212,35 +215,26 @@ public class CarInteractables : MonoBehaviour
     {
         if (!isSeated)
         {
-            // ======================
-            // SADNUTIE DO AUTA
-            // ======================
-
-            // skry hráča
             PlayerTransform.SetActive(false);
 
-            // camera prepnutie
             PlayerCamera.gameObject.SetActive(false);
             carCamera.gameObject.SetActive(true);
 
-            // zarovnanie car kamery (žiadny tilt z minulosti)
             carCamera.rotation = GetUprightRotation(carCamera.rotation);
 
-            // parent na auto (až PO rotácii)
             carCamera.SetParent(this.transform, true);
+            
+            waypointManager.waypointCamera = carCamera.GetComponent<Camera>();
 
             isSeated = true;
         }
         else if (isSeated && isOpen)
         {
-            // camera prepnutie
             carCamera.gameObject.SetActive(false);
             PlayerCamera.gameObject.SetActive(true);
 
-            // reset parentingu
             PlayerTransform.transform.SetParent(null);
 
-            // bezpečná pozícia a rotácia
             Vector3 safeExitPos = exitPoint.position + Vector3.up;
             Quaternion safeExitRot = GetUprightRotation(exitPoint.rotation);
 
@@ -250,6 +244,7 @@ public class CarInteractables : MonoBehaviour
             PlayerCamera.SetParent(PlayerCameraPosition, false);
             PlayerCamera.localPosition = Vector3.zero;
             PlayerCamera.localRotation = Quaternion.identity;
+            waypointManager.waypointCamera = PlayerCamera.GetComponent<Camera>();
 
             PlayerTransform.SetActive(true);
 

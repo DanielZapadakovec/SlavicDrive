@@ -256,7 +256,7 @@ MonoBehaviour:
   - type: 15
     prefab: {fileID: 8714629413629987450, guid: e329a1157392c854fa31ca73cb2d2c9d, type: 3}
     icon: {fileID: 21300000, guid: 610621765edbd6a4d8b9f9f7084875fc, type: 3}
-    price: 10
+    price: 2
     consumableData:
       isFood: 1
       foodAmount: -0.15
@@ -304,7 +304,7 @@ MonoBehaviour:
   - type: 18
     prefab: {fileID: 5388796276684106650, guid: 62892ea0379133641849c59c4a497fb5, type: 3}
     icon: {fileID: 21300000, guid: f4278bcfc5899d04495ba41a0a085910, type: 3}
-    price: 25
+    price: 5
     consumableData:
       isFood: 0
       foodAmount: 0

@@ -140,7 +140,7 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        currentSpeed = carRigidbody.velocity.magnitude * 3.6f; // km/h
+        currentSpeed = carRigidbody.velocity.magnitude * 3.6f;
 
         if (carInteractables.isSeated && carInteractables.engineRunning)
         {

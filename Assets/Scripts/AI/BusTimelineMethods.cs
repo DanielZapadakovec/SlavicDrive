@@ -1,9 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
-using static Unity.VisualScripting.Member;
+using UnityEngine.Splines;
+using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class BusTimelineMethods : MonoBehaviour
 {
@@ -14,17 +15,46 @@ public class BusTimelineMethods : MonoBehaviour
     public VolumeProfile normalProfile;
     public GameObject MainCanvas;
     public GameObject secondCanvas;
-
-
+    public GameObject bus;
+    [Header("SkipScene")]
+    public CarAIFollower follower;
+    public SplineContainer secondSpline;
+    public Vector3 busSkippedPosition;
+    public Quaternion busSkippedRotation;
+    public PlayableDirector busTimeline;
+    private float holdTime = 0f;
+    public float requiredHoldTime = 3f;
+    public Image spaceFillImage;
     public AudioMixer mixer;
+
+    public bool canSkip;
     public void Start()
     {
-        Player.gameObject.SetActive(false);
+        Player.SetActive(false);
+        canSkip = true;
+    }
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.Space) && canSkip)
+        {
+            float fill = Mathf.Clamp01(holdTime / requiredHoldTime);
+            spaceFillImage.fillAmount = fill;
+            holdTime += Time.deltaTime;
+            if (holdTime >= requiredHoldTime)
+            {
+                SkipScene();
+            }
+        }
+        else
+        {
+            holdTime = 0f;
+            spaceFillImage.fillAmount = 0;
+        }
     }
 
     public void SetLowpass(float value)
     {
-        StartCoroutine(AnimateLowpass(5,value));
+        StartCoroutine(AnimateLowpass(5, value));
     }
     public void SetHighPass(float value)
     {
@@ -82,5 +112,14 @@ public class BusTimelineMethods : MonoBehaviour
         volume.profile = normalProfile;
         MainCanvas.SetActive(true);
         secondCanvas.SetActive(false);
+    }
+
+    public void SkipScene()
+    {
+        bus.transform.position = busSkippedPosition;
+        bus.transform.rotation = busSkippedRotation;
+        follower.SetSecondSplineActive(secondSpline);
+        busTimeline.time = 106f;
+        canSkip = false;
     }
 }

@@ -105,5 +105,6 @@ public class CarAIFollower : MonoBehaviour
     {
         spline = secondSpline;
         t = 0f;
+        rb.velocity = Vector3.zero;
     }
 }

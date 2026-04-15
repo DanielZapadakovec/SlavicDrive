@@ -154,6 +154,7 @@ public class CarAudioSystem : MonoBehaviour
         else if (ps.isPlaying)
         {
             ps.Stop();
+            skidAudioSource.Stop();
         }
     }
 

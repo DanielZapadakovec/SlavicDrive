@@ -11,8 +11,7 @@ TagManager:
   - Car
   - IconsCreationCamera
   - BottleCrate
-  - PressingPoint
-  - HeaterMachine
+  - StreetLamp
   layers:
   - Default
   - TransparentFX

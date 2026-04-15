@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShopAssistantFirstDialogue
   m_EditorClassIdentifier: 
   playOnlyOnce: 1
-  hasPlayed: 0
+  hasPlayed: 1
   lines:
   - text: "Obchodn\xEDk: Vitaj mlad\xFD, nak\xFAp \u010Do potrebuje\u0161, \xE1\xE1nou."
     voice: {fileID: 8300000, guid: d07d75e7a3e23f943a0af2ef975a3edd, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
     secondsPerCharacter: 0.1
     waitForContinue: 0
     extraHoldTime: 0
-  - text: "Ak chce\u0161 zastav sa na \xFArade tam ti toho povedia viac."
+  - text: "Ak chce\u0161 zastav sa u Feriho ten \u0165a hod\xED domov."
     voice: {fileID: 0}
     secondsPerCharacter: 0.1
     waitForContinue: 0

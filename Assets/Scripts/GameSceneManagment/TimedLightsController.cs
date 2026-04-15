@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,17 +7,23 @@ public class TimedLightsController : MonoBehaviour
 {
     [Header("References")]
     public DayNightCycle dayNightCycle;
-    public List<Light> lights = new List<Light>();
+
+    private List<Light> lights = new List<Light>();
+    private List<Renderer> renderers = new List<Renderer>();
+    private List<LensFlare> lensFlares = new List<LensFlare>();
+
+    [Header("Materials")]
+    public Material lightOffMaterial;
+    public Material lightOnMaterial;
+
+    [Tooltip("Index materi√°lu (napr. 1 = druh√Ω materi√°l)")]
+    public int materialIndex = 1;
 
     [Header("Time Settings")]
-    [Tooltip("Kedy sa maj˙ svetl· zapÌnaù (hodina)")]
     public int turnOnHour = 18;
-
-    [Tooltip("Kedy sa maj˙ svetl· vypÌnaù (hodina)")]
     public int turnOffHour = 6;
 
     [Header("Switch Settings")]
-    [Tooltip("Interval medzi zapnutÌm jednotliv˝ch svetiel")]
     public float switchInterval = 0.2f;
 
     private bool lightsOn = false;
@@ -25,7 +31,36 @@ public class TimedLightsController : MonoBehaviour
 
     private void Start()
     {
+        FindStreetLights();
         SetAllLights(false);
+    }
+
+    private void FindStreetLights()
+    {
+        lights.Clear();
+        renderers.Clear();
+        lensFlares.Clear();
+
+        GameObject[] lamps = GameObject.FindGameObjectsWithTag("StreetLamp");
+
+        foreach (GameObject lamp in lamps)
+        {
+            // Renderer (na materi√°l)
+            Renderer rend = lamp.GetComponentInChildren<Renderer>();
+            if (rend != null)
+                renderers.Add(rend);
+
+            // Light
+            Light lightComponent = lamp.GetComponentInChildren<Light>();
+            if (lightComponent != null)
+            {
+                lights.Add(lightComponent);
+
+                // Lens Flare
+                LensFlare flare = lightComponent.GetComponent<LensFlare>();
+                lensFlares.Add(flare); // m√¥≈æe by≈• null
+            }
+        }
     }
 
     private void Update()
@@ -49,7 +84,6 @@ public class TimedLightsController : MonoBehaviour
 
     private bool IsNightTime(int hour)
     {
-        // napr. 18:00 ñ 06:00
         if (turnOnHour < turnOffHour)
             return hour >= turnOnHour && hour < turnOffHour;
         else
@@ -67,10 +101,28 @@ public class TimedLightsController : MonoBehaviour
 
     private IEnumerator SwitchLightsSequentially(bool turnOn)
     {
-        foreach (Light l in lights)
+        for (int i = 0; i < lights.Count; i++)
         {
-            if (l != null)
-                l.enabled = turnOn;
+            // üí° Light
+            if (lights[i] != null)
+                lights[i].enabled = turnOn;
+
+            // üé® Material (len konkr√©tny index!)
+            if (i < renderers.Count && renderers[i] != null)
+            {
+                Renderer rend = renderers[i];
+                Material[] mats = rend.materials;
+
+                if (materialIndex < mats.Length)
+                {
+                    mats[materialIndex] = turnOn ? lightOnMaterial : lightOffMaterial;
+                    rend.materials = mats;
+                }
+            }
+
+            // ‚ú® Lens Flare
+            if (i < lensFlares.Count && lensFlares[i] != null)
+                lensFlares[i].enabled = turnOn;
 
             yield return new WaitForSeconds(switchInterval);
         }
@@ -78,10 +130,25 @@ public class TimedLightsController : MonoBehaviour
 
     private void SetAllLights(bool state)
     {
-        foreach (Light l in lights)
+        for (int i = 0; i < lights.Count; i++)
         {
-            if (l != null)
-                l.enabled = state;
+            if (lights[i] != null)
+                lights[i].enabled = state;
+
+            if (i < renderers.Count && renderers[i] != null)
+            {
+                Renderer rend = renderers[i];
+                Material[] mats = rend.materials;
+
+                if (materialIndex < mats.Length)
+                {
+                    mats[materialIndex] = state ? lightOnMaterial : lightOffMaterial;
+                    rend.materials = mats;
+                }
+            }
+
+            if (i < lensFlares.Count && lensFlares[i] != null)
+                lensFlares[i].enabled = state;
         }
     }
 }

@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e651236eb4433438ef63417fa9a59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: JAR
+  message: "F\u013DA\u0160A"
   onInteraction:
     m_PersistentCalls:
       m_Calls:

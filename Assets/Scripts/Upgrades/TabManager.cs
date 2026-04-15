@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TabManager : MonoBehaviour
 {
-    public TabButton[] tabs;
+    public TabButtons[] tabs;
     public AudioSource municipalUISource;
     public AudioClip buttonClick;
     public void Start()

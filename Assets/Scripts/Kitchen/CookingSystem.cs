@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
+using WrightAngle.Waypoint;
 
 public class CookingSystem : MonoBehaviour
 {
@@ -24,12 +26,17 @@ public class CookingSystem : MonoBehaviour
 
     private CookingState state = CookingState.Idle;
 
+    public WaypointTarget waypoint;
+    public AchievementSystem achievementSystem;
+
     [Header("Animations")]
     public Animator kitchenAnimator;
 
 
     [Header("CookingCamera")]
     public Camera cookingCamera;
+
+    public ParticleSystem ps;
 
 
     // =========================
@@ -155,6 +162,7 @@ public class CookingSystem : MonoBehaviour
 
         waterUI.SetActive(false);
         cookingUI.SetActive(true);
+        ps.gameObject.SetActive(true);
     }
 
     // =========================
@@ -186,6 +194,9 @@ public class CookingSystem : MonoBehaviour
         PlayerController.SwitchingCameraMovement();
         cookingCamera.gameObject.SetActive(false);
         player.SetActive(true);
+        waypoint.ActivateWaypoint();
+        ps.gameObject.SetActive(false);
+        achievementSystem.ShowAchievement(4);
 
         ResetCooking();
     }

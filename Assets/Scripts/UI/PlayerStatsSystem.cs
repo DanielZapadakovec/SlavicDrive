@@ -18,7 +18,7 @@ public class PlayerStatsSystem : MonoBehaviour
     [SerializeField] private GameObject hungerWarning;
     [SerializeField] private float hungerIncreaseRate = 0.01f;
     public event Action OnHungerCritical;
-    private float hunger = 0f;
+    public float hunger = 0f;
     #endregion
 
     #region [Properties] ThirstSystem

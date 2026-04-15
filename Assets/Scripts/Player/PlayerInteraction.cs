@@ -9,7 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     public float playerReach = 3f;
     private Interactable currentInteractable;
     public Camera playerCamera;
-    public CrosshairNormal cross;
+    public CrosshairSystem cross;
     public Text interactableText;
     private bool canHold;
     public Text errorMessage;
@@ -109,7 +109,7 @@ public class PlayerInteraction : MonoBehaviour
         currentInteractable = newInteractable;
         currentInteractable.EnableOutline();
         EnableInteractionText(currentInteractable.message);
-        cross.InteractiveActive();
+        cross.SetCrosshair(CrosshairSystem.CrosshairType.Interactable);
     }
 
     public void DisableCurrentInteractable()
@@ -120,7 +120,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 currentInteractable.DisableHolding();
             }
-            cross.InteractiveBase();
+            cross.SetCrosshair(CrosshairSystem.CrosshairType.Base);
             errorMessage.text = null;
             currentInteractable.DisableOutline();
             DisableInteractionText();
